@@ -17,9 +17,11 @@ group :jekyll_plugins do
     gem 'jekyll-toc'
     gem 'jekyll-twitter-plugin'
     gem 'jemoji'
-    gem 'mini_racer'
+    gem 'mini_racer' if not Gem.win_platform?
     gem 'unicode_utils'
     gem 'webrick'
+    gem 'wdm', '>= 0.1.0' if Gem.win_platform?
+    gem 'eventmachine', '1.2.7', git: 'https://github.com/eventmachine/eventmachine.git', tag: 'v1.2.7'
 end
 group :other_plugins do
     gem 'feedjira'
