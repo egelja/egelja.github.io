@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://nikola.cx/sitemap.xml
+Sitemap: https://www.nikola.cx/sitemap.xml
