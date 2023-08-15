@@ -21,9 +21,10 @@ social: true  # includes social icons at the bottom of the page
 
 **Hey there!**
 
-My name is Nikola Maruszewski, and I am an undergraduate student at Northwestern
-University. I am majoring in Computer Science, and plan to complete a Masters in
-Computer Engineering through a BS/MS program.
+My name is Nikola Maruszewski (although I often go by Nino), and I am an 
+undergraduate student at Northwestern University. I am majoring in Computer
+Science, and plan to complete a Masters in Computer Engineering through 
+a BS/MS program.
 
 I am currently performing research on Quantum Systems with 
 [Prof. Nikos Hardavellas](https://users.cs.northwestern.edu/~hardav/) in the
