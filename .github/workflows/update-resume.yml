@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   # Schedule updates (each hour)
   schedule: 
-    - cron: "5 * * * *"
+    - cron: "25 * * * *"
 
 jobs:
   update_resume:
