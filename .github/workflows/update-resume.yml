@@ -12,15 +12,22 @@ jobs:
     steps:
       - name: Set up Git repository
         uses: actions/checkout@v2
-        
+        with:
+          persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal access token.
+          fetch-depth: 0 # otherwise, there would be errors pushing refs to the destination repository.        
+
       - name: Download new resume
         run: |
           curl https://raw.githubusercontent.com/egelja/resume/master/main.pdf -o assets/pdf/resume.pdf
 
-      - name: Push changes
+      - name: Commit files
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git commit -am "chore: update resume" || true
-          git push || true
 
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.PAT }}
+          branch: ${{ github.ref }}
