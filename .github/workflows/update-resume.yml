@@ -7,7 +7,7 @@ on:
     - cron: "5 * * * *"
 
 jobs:
-  build_latex:
+  update_resume:
     runs-on: ubuntu-latest
     steps:
       - name: Set up Git repository
