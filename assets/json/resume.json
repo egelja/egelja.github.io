@@ -156,7 +156,12 @@
                 "Containerd",
                 "Taskfile",
                 "Make",
+                "CMake",
+                "Ruff and Flake8",
+                "Mypy",
+                "Poetry",
                 "Git",
+                "Github Actions",
                 "Linux"
             ]
         }
