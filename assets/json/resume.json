@@ -210,5 +210,30 @@
         }
     ],
     "references": [],
-    "projects": []
+    "projects": [
+        {
+            "name": "Self-Balancing Robot",
+            "startDate": "2020-01-06",
+            "endDate": "2021-07-30",
+            "summary": "C++, Arduino, MPU6050, L298N",
+            "highlights": [
+                "Two wheeled self-balancing robot using a MPU6050 gyroscope and L298N motor controller.",
+                "All code is written in C++; the motors are PID controlled using the angle of the robot reported by the gyroscope.",
+                "The bulk of the work was done from 2020.01.06 to 2020.01.24, with additional work during July 2021."
+            ],
+            "url": "https://www.nikola.cx/projects/self-balancing-robot"
+        },
+        {
+            "name": "MediumAnt",
+            "startDate": "2022-01-03",
+            "endDate": "2021-01-21",
+            "summary": "C, Polulu Wixel, Polulu Micro Maestro, Servos",
+            "highlights": [
+                "Six-legged ant-like robot created in collaboration with researchers at the MI Legged Robots Lab at the University of Michigan.",
+                "Built from laser-cut styrofoam; moves using 360° servos controlled by a Polulu Micro Maestro.",
+                "Movement control accomplished by two wirelessly communicating Polulu Wixels, one on the robot to control motors and the other connected to a PC to recieve commands."
+            ],
+            "url": "https://www.nikola.cx/projects/mediumant"
+        }
+    ]
 }
