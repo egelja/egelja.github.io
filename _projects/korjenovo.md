@@ -1,11 +1,13 @@
 ---
 layout: page
 title: Korjenovo
-description: a project with a background image
-img: assets/img/12.jpg
+description: A compiler for chiplet-based quantum computers.
+img: assets/img/quantum.jpg
 importance: 1
 category: work
-related_publications: einstein1956investigations, einstein1950meaning
+redirect: http://paragon.cs.northwestern.edu/#Research
+# related_publications: 
+# giscus_comments: true
 ---
 
 Every project has a beautiful feature showcase page.
