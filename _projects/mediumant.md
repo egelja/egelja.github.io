@@ -1,12 +1,23 @@
 ---
 layout: page
 title: MediumAnt
-description: a project with a background image
-img: assets/img/12.jpg
-importance: 1
-category: work
-related_publications: einstein1956investigations, einstein1950meaning
+description: A six-legged, walking robot, created using servos and Pololu Wixels.
+img: assets/img/mediumant.jpg
+importance: 2
+category: personal
+giscus_comments: true
 ---
+
+<div class="text-center">
+    {%
+        include video.html 
+        path="https://www.youtube.com/embed/VY8prr2lV9A?si=fKjnZixwrg-JiNjb"
+        caption="Video of MediumAnt walking with no user input."
+        title="Video of MediumAnt walking."
+        alt="Video of MediumAnt walking."
+        class="rounded z-depth-1"
+    %}
+</div>
 
 Every project has a beautiful feature showcase page.
 It's easy to include images in a flexible 3-column grid format.

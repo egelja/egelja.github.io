@@ -1,12 +1,25 @@
 ---
 layout: page
 title: Self Balancing Robot
-description: a project with a background image
-img: assets/img/12.jpg
-importance: 1
-category: work
-related_publications: einstein1956investigations, einstein1950meaning
+description: A two-wheeled, self-balancing robot created using an Arduino and a MPU6050 gyroscope.
+img: assets/img/self-balancing-robot.png
+importance: 3
+category: personal
+giscus_comments: true
 ---
+
+
+<div class="text-center">
+    {%
+        include video.html 
+        path="https://www.youtube.com/embed/_9ukTeZ6Cfo?si=VuDx-DslcLFurVTX" 
+        caption="Video of the two-wheeled self-balancing robot driving around with no user input."
+        title="Video of the two-wheeled self-balancing robot."
+        alt="Video of the two-wheeled self-balancing robot."
+        class="rounded z-depth-1"
+    %}
+</div>
+    
 
 Every project has a beautiful feature showcase page.
 It's easy to include images in a flexible 3-column grid format.
