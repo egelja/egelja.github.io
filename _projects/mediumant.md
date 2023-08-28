@@ -2,7 +2,7 @@
 layout: page
 title: MediumANT
 description: A six-legged, walking robot, created using servos and Pololu Wixels.
-img: assets/img/mediumant.jpg
+img: assets/img/mediumant/mediumant.jpg
 importance: 2
 category: personal
 giscus_comments: true
@@ -28,7 +28,7 @@ giscus_comments: true
     <div class="col-sm-5 mt-3 mt-md-0">
         {% 
             include figure.html 
-            path="assets/img/mediumant.jpg" 
+            path="assets/img/mediumant/mediumant.jpg" 
             title="MediumANT robot" 
             alt="MediumANT robot" 
             caption="The completed MediumANT robot, walking around on its own power."
