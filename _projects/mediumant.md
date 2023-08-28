@@ -29,7 +29,8 @@ giscus_comments: true
         {% 
             include figure.html 
             path="assets/img/mediumant.jpg" 
-            title="MediumAnt" 
+            title="MediumANT robot" 
+            alt="MediumANT robot" 
             caption="The completed MediumANT robot, walking around on its own power."
             class="img-fluid rounded z-depth-1"
             zoomable=true
@@ -58,6 +59,7 @@ lift the robot of the ground while walking.
             include figure.html 
             path="assets/img/mediumant/legs.png" 
             title="MediumANT leg assembly" 
+            alt="MediumANT leg assembly" 
             caption="The leg assembly for the MediumANT robot."
             class="img-fluid rounded z-depth-1"
             zoomable=true
@@ -67,7 +69,8 @@ lift the robot of the ground while walking.
         {% 
             include figure.html 
             path="assets/img/mediumant/hinge.png" 
-            title="MediumANT hinges" 
+            title="MediumANT hinges"
+            alt="MediumANT hinges"
             caption="The hinges for the MediumANT's legs."
             class="img-fluid rounded z-depth-1"
             style="max-height: 209px;"
@@ -95,6 +98,7 @@ screw standoffs.
         include figure.html
         path="assets/img/mediumant/body.jpg"
         title="MediumANT body"
+        alt="MediumANT body"
         caption="The assembly body of MediumANT, with legs."
         class="img-fluid rounded z-depth-1"
         zoomable=true
@@ -125,6 +129,7 @@ This cycle continues to allow the robot to walk like an ant.
         include figure.html
         path="assets/img/mediumant/electronics.png"
         title="MediumANT electronics"
+        alt="MediumANT electronics"
         caption="The electronics controlling MediumANT."
         class="img-fluid rounded z-depth-1"
         zoomable=true
@@ -153,9 +158,9 @@ moved.
     {%
         include video.html 
         path="https://www.youtube.com/embed/VY8prr2lV9A?si=fKjnZixwrg-JiNjb"
-        caption="Video of MediumAnt walking with no user input."
-        title="Video of MediumAnt walking."
-        alt="Video of MediumAnt walking."
+        caption="Video of MediumANT walking with no user input."
+        title="Video of MediumANT walking."
+        alt="Video of MediumANT walking."
         class="rounded z-depth-1"
     %}
 </div>
