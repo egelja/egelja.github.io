@@ -236,7 +236,7 @@
             "endDate": "2022-02-01",
             "summary": "C, Polulu Wixel, Polulu Micro Maestro, Servos",
             "highlights": [
-                "Six-legged ant-like robot created in collaboration with researchers at the BIRDS Lab at the University of Michigan.",
+                "Six-legged ant-like robot created in collaboration with Dr. Shai Revzen at the BIRDS Lab at the University of Michigan.",
                 "Built from laser-cut styrofoam; moves using 360° servos controlled by a Polulu Micro Maestro.",
                 "Movement control accomplished by two wirelessly communicating Polulu Wixels, one on the robot to control motors and the other connected to a PC to recieve commands."
             ],
