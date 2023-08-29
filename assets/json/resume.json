@@ -180,7 +180,9 @@
                 "Servos",
                 "Gyroscopes",
                 "PID Tuning",
-                "Motion processing"
+                "Motion processing",
+                "Command processing",
+                "Wireless communication"
             ]
         }
     ],
