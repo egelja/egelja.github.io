@@ -2,17 +2,22 @@
     "basics": {
         "name": "Nikola V. Maruszewski",
         "label": "Student and Researcher",
-        "image": "https://www.nikola.cx/assets/img/prof_pic.jpg",
+        "image": "https://www.nikola.cx/assets/img/resume_pic.jpg",
         "email": "me@nikola.cx",
         "phone": "(847) 644-3542",
         "url": "https://www.nikola.cx",
-        "summary": "Student at Northwestern University, majoring in Computer Science and performing research in quantum computing.",
+        "summary": "Computer science major with a passion for learning. I plan to complete a masters degree through the BS/MS program at Northwestern University. Currently performing quantum systems research with Prof. Nikos Hardavellas in the PARAG@N Lab. I also have interests in computer engineering, embedded devices, machine learning, and compilers.Computer science major with a passion for learning. I plan to complete a masters degree through the BS/MS program at Northwestern University. Currently performing quantum systems research with Prof. Nikos Hardavellas in the PARAG@N Lab. I also have interests in computer engineering, embedded devices, machine learning, and compilers.",
         "location": {},
         "profiles": [
             {
                 "network": "Github",
                 "username": "egelja",
                 "url": "https://github.com/egelja"
+            },
+            {
+                "network": "Linkedin",
+                "username": "nikola-maruszewski",
+                "url": "https://www.linkedin.com/in/nikola-maruszewski/"
             },
             {
                 "network": "Mastodon",
@@ -23,7 +28,7 @@
     },
     "work": [
         {
-            "name": "Northwestern University",
+            "name": "PARAG@N Lab",
             "url": "http://paragon.cs.northwestern.edu/#Research",
             "position": "Summer Undergraduate Researcher",
             "startDate": "2023-06-12",
@@ -65,12 +70,12 @@
     "education": [
         {
             "institution": "Northwestern University",
-            "url": "https://www.roycemoreschool.org/",
+            "url": "https://www.northwestern.edu/",
             "area": "Computer Science",
             "studyType": "Bachelor of Science",
             "startDate": "2022-09-15",
             "endDate": "",
-            "score": "4.00",
+            "score": "4.00/4.00",
             "courses": [
                 "CS 322: Compiler Construction",
                 "CS 349: Machine Learning",
@@ -84,7 +89,7 @@
             "studyType": "High School Diploma",
             "startDate": "2018-08-23",
             "endDate": "2022-06-03",
-            "score": "4.80",
+            "score": "4.80/4.00",
             "courses": [
                 "AP Physics C: Mechanics and E&M",
                 "CS 213: Intro to Computer Systems (Dual Enrollment @ NU)",
@@ -160,7 +165,7 @@
         },
         {
             "language": "French",
-            "fluency": "Fluent"
+            "fluency": "Professional working proficiency "
         }
     ],
     "interests": [
