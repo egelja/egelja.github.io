@@ -144,7 +144,8 @@
                 "PyTorch",
                 "NumPy",
                 "PolaRS",
-                "Scikit-learn"
+                "Scikit-learn",
+                "Linear Algebra"
             ]
         },
         {
@@ -163,6 +164,23 @@
                 "Git",
                 "Github Actions",
                 "Linux"
+            ]
+        },
+        {
+            "name": "Robotics",
+            "icon": "fa-solid fa-robot",
+            "level": "Master",
+            "keywords": [
+                "Embedded devices",
+                "Embedded programming",
+                "ESP-32",
+                "Arduino",
+                "Intel 8051",
+                "Motor controls",
+                "Servos",
+                "Gyroscope",
+                "PID Tuning",
+                "Motion processing"
             ]
         }
     ],
