@@ -3,7 +3,7 @@ name: Update Resume
 on:
   workflow_dispatch:
   # Schedule updates (each hour)
-  schedule: 
+  schedule:
     - cron: "25 * * * *"
 
 jobs:
@@ -18,7 +18,7 @@ jobs:
 
       - name: Download new resume
         run: |
-          curl https://raw.githubusercontent.com/egelja/resume/master/main.pdf -o assets/pdf/resume.pdf
+          curl https://raw.githubusercontent.com/egelja/resume/master/main.pdf -o assets/pdf/resume_Nikola-Maruszewski.pdf
 
       - name: Commit files
         run: |
