@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-A [resume PDF](https://www.nikola.cx/assets/pdf/resume.pdf) has been uploaded.
+A [resume PDF](https://www.nikola.cx/assets/pdf/resume_Nikola-Maruszewski.pdf) has been uploaded.
