@@ -69,7 +69,7 @@
                 "Held several office hours each week.",
                 "Answered questions, both synchronously in office hours each week and asynchronously on a Piazza message board."
             ],
-            "cv_only": true
+            "cv_only": false
         }
     ],
     "volunteer": [
@@ -102,7 +102,8 @@
                 "CS 322: Compiler Construction",
                 "CS 349: Machine Learning",
                 "CS 449: Deep Learning"
-            ]
+            ],
+            "cv_only": false
         },
         {
             "institution": "Roycemore School",
@@ -118,7 +119,8 @@
                 "AP Physics C: Mechanics and E&M",
                 "CS 213: Intro to Computer Systems (Dual Enrollment @ NU)",
                 "MATH 240: Linear Algebra (Dual Enrollment @ NU)"
-            ]
+            ],
+            "cv_only": true
         }
     ],
     "awards": [
