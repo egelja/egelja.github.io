@@ -99,7 +99,9 @@
             "score": "4.00/4.00",
             "location": "Evanston, IL",
             "courses": [
+                "CE 361: Computer Architecture I",
                 "CS 322: Compiler Construction",
+                "CS 323: Code Analysis and Transformation",
                 "CS 349: Machine Learning",
                 "CS 449: Deep Learning"
             ],
