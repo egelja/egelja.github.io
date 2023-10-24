@@ -9,9 +9,9 @@ profile:
   image: prof_pic.png
   image_circular: false # crops the image to make it circular
   address: >
-    <!-- <p>555 your office number</p> -->
-    <!-- <p>123 your address street</p> -->
-    <!-- <p>Your City, State 12345</p> -->
+    <p>Mudd Hall 3305</p>
+    <p>2233 Tech Drive</p>
+    <p>Evanston, IL 60208</p>
 
 news: true  # includes a list of news items
 latest_posts: false  # includes a list of the newest posts
@@ -33,4 +33,4 @@ computer hardware, embedded systems, compilers, and operating systems.
 
 Outside of school, I am an avid swimmer, having swam competitively for 10 years.
 My other hobbies include woodworking and tinkering with embedded devices, such
-as the ESP-32. I'm also involved with the [Northwestern FinTech Club](https://nuft.nikola.cx).
+as the ESP-32. I'm also involved with the [Northwestern FinTech Club](https://nuft.mccormick.northwestern.edu/).
