@@ -33,4 +33,4 @@ computer hardware, embedded systems, compilers, and operating systems.
 
 Outside of school, I am an avid swimmer, having swam competitively for 10 years.
 My other hobbies include woodworking and tinkering with embedded devices, such
-as the ESP-32. I'm also involved with the [Northwestern FinTech Club](https://nuft.mccormick.northwestern.edu/).
+as the ESP-32. I'm also involved with the [Northwestern FinTech Club](https://nuft.dev/).
