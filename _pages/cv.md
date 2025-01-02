@@ -9,4 +9,6 @@ nav_order: 4
 # description: You can find my CV below. A PDF version can also be downloaded by clicking the button in the top right.
 ---
 
+[Click here to download.](/assets/pdf/cv-Nikola_Maruszewski.pdf)
+
 <object data="/assets/pdf/cv-Nikola_Maruszewski.pdf" type="application/pdf" style="width: 100%;height: 80vh;"></object>
