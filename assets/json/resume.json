@@ -23,6 +23,11 @@
                 "network": "Mastodon",
                 "username": "@nikola@discuss.systems",
                 "url": "https://discuss.systems/@nikola"
+            },
+            {
+                "network": "Orcid",
+                "username": "0009-0009-5468-4085",
+                "url": "https://orcid.org/0009-0009-5468-4085"
             }
         ]
     },
@@ -44,28 +49,11 @@
             "last": true
         },
         {
-            "position": "Software Engineer",
-            "name": "Northwestern Fintech Club",
-            "startDate": "2023-06-15",
-            "endDate": "",
-            "summary": "Helped build and maintain a trading infrastructure using C++, Python, CMake, Machine Learning, libcurl, and libuv.",
-            "location": "Evanston, IL",
-            "highlights": [
-                "Created a orderbook system to pull orderbooks from exchanges using libcurl and libuv, then push them into a Redis instance for consumption by ML prediction clients.",
-                "Organized linting and build systems for multiple projects, in C++ and Python.",
-                "Helped create a devlopment architecture for the coming years, with a focus on reducing technical debt."
-            ],
-            "url": "https://www.nikola.cx/projects/nuft",
-            "cv_only": false,
-            "last": false
-        },
-        {
             "name": "PARAG@N Lab",
             "url": "http://paragon.cs.northwestern.edu/#Research",
-            "position": "Summer Undergraduate Researcher",
+            "position": "Undergraduate Researcher",
             "startDate": "2023-06-12",
-            "endDate": "2023-09-19",
-            "summary": "Funded by an NSF REU and a grant from the NU CS department, I was able to perform cutting-edge research on quantum computing.",
+            "summary": "Led a research project to design improved Quantum Systems software.",
             "location": "Evanston, IL",
             "highlights": [
                 "Designed and programmed a quantum compiler to optimize quantum circuits for emerging quantum computer topologies.",
