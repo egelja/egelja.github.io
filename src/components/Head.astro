@@ -1,0 +1,28 @@
+---
+import ProfilePicture from "@/images/prof_pic.jpg";
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<!-- Page info -->
+<title>{title}</title>
+<meta name="description" content="Welcome to my new Astro site!" />
+
+<!-- Open Graph tags -->
+<meta property="og:title" content={title} />
+<meta property="og:type" content="website" />
+<meta property="og:url" content={Astro.url} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={ProfilePicture.src} />
+<meta
+  property="og:image:alt"
+  content="Headshot depicting Nikola Maruszewski."
+/>
+
+<!-- SEO Stuff -->
+<link rel="sitemap" href="/sitemap-index.xml" />
