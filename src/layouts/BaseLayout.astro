@@ -1,0 +1,43 @@
+---
+import "@/styles/global.css";
+
+import Head from "@/components/Head.astro";
+
+// Component args
+interface Props {
+  title?: string | null;
+  description?: string;
+  children: any;
+}
+
+// Get props
+const {
+  title = null,
+  description = "The personal website of Nikola V. Maruszewski.",
+} = Astro.props;
+
+// Build full title
+const baseTitle = "Nikola V. Maruszewski";
+const fullTitle = title == null ? baseTitle : `${title} | ${baseTitle}`;
+---
+
+<html lang="en">
+  <head>
+    <!-- Boilerplate meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Dynamic meta tags -->
+    <Head title={fullTitle} description={description} />
+
+    <!-- Web analytics -->
+    <!-- TODO -->
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
