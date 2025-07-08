@@ -1,7 +1,8 @@
 ---
 import "@/styles/global.css";
 
-import Head from "@/components/Head.astro";
+import Head from "@/components/layout/Head.astro";
+import Header from "@/components/layout/Header.astro";
 
 // Component args
 interface Props {
@@ -25,7 +26,7 @@ const fullTitle = title == null ? baseTitle : `${title} | ${baseTitle}`;
   <head>
     <!-- Boilerplate meta tags -->
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
 
     <!-- Favicon -->
@@ -37,7 +38,8 @@ const fullTitle = title == null ? baseTitle : `${title} | ${baseTitle}`;
     <!-- Web analytics -->
     <!-- TODO -->
   </head>
-  <body>
+  <body class="bg-white">
+    <Header />
     <slot />
   </body>
 </html>
