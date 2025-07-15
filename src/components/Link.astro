@@ -1,0 +1,79 @@
+---
+import { Icon } from "astro-icon/components";
+
+import { cva } from "cva";
+import { twMerge } from "tailwind-merge";
+
+interface Props {
+  // URL
+  href: string;
+
+  // Styling
+  class: any;
+
+  noUnderline?: boolean;
+  noColor?: boolean;
+
+  // Astro
+  children: any;
+}
+
+// Get props
+const {
+  href,
+  class: className,
+  noUnderline = false,
+  noColor = false,
+} = Astro.props;
+
+// Check if outgoing URL
+const url = new URL(href, Astro.site);
+const outgoing = url.host != Astro.site!.host;
+
+// Add attributes to outgoing URLs
+const target = outgoing ? "_blank" : "_self"; // _self is default
+const rel = outgoing ? "noopener noreferrer" : undefined;
+
+// Style attributes
+const linkVariants = cva(["inline-flex", "items-center"], {
+  variants: {
+    underline: { false: null, true: ["hover:underline", "underline-offset-4"] },
+    color: { false: null, true: ["text-blue-500"] },
+  },
+});
+
+const linkClasses = twMerge(
+  linkVariants({ className, underline: !noUnderline, color: !noColor })
+);
+---
+
+<a id="link" href={href} class={linkClasses} target={target} rel={rel}>
+  <span><slot /></span>
+  {
+    outgoing && (
+      <span id="icon-span" class="p-0.5 pb-0" data-underline={!noUnderline}>
+        <Icon name="flowbite:arrow-up-right-from-square-outline" />
+      </span>
+    )
+  }
+</a>
+
+<style>
+  /* https://stackoverflow.com/a/48693294 */
+  #icon-span {
+    position: relative;
+    display: inline-block;
+    vertical-align: bottom;
+    text-underline-offset: 1px;
+  }
+  #link:hover #icon-span[data-underline="true"]::after {
+    content: "\00a0";
+    position: absolute;
+    text-decoration: underline;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    top: 0;
+    letter-spacing: 14px; /* adjust for icon */
+  }
+</style>
