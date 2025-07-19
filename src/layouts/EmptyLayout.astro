@@ -1,0 +1,44 @@
+---
+import "@/styles/global.css";
+
+import Head from "@/components/layout/Head.astro";
+import Header from "@/components/layout/Header.astro";
+
+import { DEFAULT_TITLE, DEFAULT_DESCRIPTION } from "@/constants.ts";
+
+// Component args
+interface Props {
+  title?: string | null;
+  description?: string | null;
+  children: any;
+}
+
+// Get props
+const { title = null, description = null } = Astro.props;
+
+// Build full title and description
+const fullTitle = title == null ? DEFAULT_TITLE : `${title} | ${DEFAULT_TITLE}`;
+const fullDescription = description == null ? DEFAULT_DESCRIPTION : description;
+---
+
+<html lang="en">
+  <head>
+    <!-- Boilerplate meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Dynamic meta tags -->
+    <Head title={fullTitle} description={fullDescription} />
+
+    <!-- Web analytics -->
+    <!-- TODO -->
+  </head>
+  <!-- TODO dark mode -->
+  <body class="bg-white">
+    <slot />
+  </body>
+</html>

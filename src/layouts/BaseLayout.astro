@@ -1,45 +1,19 @@
 ---
-import "@/styles/global.css";
-
-import Head from "@/components/layout/Head.astro";
+import EmptyLayout from "@/layouts/EmptyLayout.astro";
 import Header from "@/components/layout/Header.astro";
 
 // Component args
 interface Props {
   title?: string | null;
-  description?: string;
+  description?: string | null;
   children: any;
 }
 
 // Get props
-const {
-  title = null,
-  description = "The personal website of Nikola V. Maruszewski.",
-} = Astro.props;
-
-// Build full title
-const baseTitle = "Nikola V. Maruszewski";
-const fullTitle = title == null ? baseTitle : `${title} | ${baseTitle}`;
+const { title = null, description = null } = Astro.props;
 ---
 
-<html lang="en">
-  <head>
-    <!-- Boilerplate meta tags -->
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="generator" content={Astro.generator} />
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-
-    <!-- Dynamic meta tags -->
-    <Head title={fullTitle} description={description} />
-
-    <!-- Web analytics -->
-    <!-- TODO -->
-  </head>
-  <body class="bg-white">
-    <Header />
-    <slot />
-  </body>
-</html>
+<EmptyLayout title={title} description={description}>
+  <Header />
+  <slot />
+</EmptyLayout>
