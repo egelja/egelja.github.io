@@ -14,6 +14,41 @@ const { title = null, description = null } = Astro.props;
 ---
 
 <EmptyLayout title={title} description={description}>
-  <Header />
-  <slot />
+  <div id="content" class="bg-white w-full relative z-10">
+    <Header menuIconId="menu-icon" />
+    <main class="mx-auto max-w-3xl pt-18 sm:pt-20">
+      <slot />
+    </main>
+  </div>
+  <aside
+    id="sidebar"
+    class="w-full absolute top-0 bottom-0 left-0 right-0 z-0 bg-gray-700 text-white"
+  >
+    SIDEBAR
+  </aside>
 </EmptyLayout>
+
+<style is:global>
+  #content {
+    transition: transform 0.25s ease-in-out;
+  }
+  .sidebar--open #content {
+    transform: translate3d(-100%, 0, 0);
+  }
+  #sidebar {
+    visibility: hidden;
+  }
+  .sidebar--open #sidebar {
+    visibility: visible;
+  }
+</style>
+
+<script>
+  document.getElementById("sidebar")?.addEventListener("click", () => {
+    document.getElementById("body")?.classList.remove("sidebar--open");
+  });
+
+  document.getElementById("menu-icon")?.addEventListener("click", () => {
+    document.getElementById("body")?.classList.add("sidebar--open");
+  });
+</script>
