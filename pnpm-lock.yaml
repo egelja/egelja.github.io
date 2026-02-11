@@ -16,7 +16,7 @@ importers:
         version: 4.3.0(astro@5.11.0(@types/node@24.0.10)(jiti@2.4.2)(lightningcss@1.30.1)(rollup@4.44.2)(typescript@5.8.3)(yaml@2.8.0))
       '@astrojs/preact':
         specifier: ^4.1.0
-        version: 4.1.0(@babel/core@7.28.0)(@types/node@24.0.10)(jiti@2.4.2)(lightningcss@1.30.1)(preact@10.26.9)(yaml@2.8.0)
+        version: 4.1.0(@babel/core@7.28.0)(@types/node@24.0.10)(jiti@2.4.2)(lightningcss@1.30.1)(preact@10.26.10)(yaml@2.8.0)
       '@astrojs/sitemap':
         specifier: ^3.4.1
         version: 3.4.1
@@ -33,8 +33,8 @@ importers:
         specifier: npm:class-variance-authority@^0.7.1
         version: class-variance-authority@0.7.1
       preact:
-        specifier: ^10.26.9
-        version: 10.26.9
+        specifier: ^10.26.10
+        version: 10.26.10
       tailwind-merge:
         specifier: ^3.3.1
         version: 3.3.1
@@ -2045,8 +2045,8 @@ packages:
     peerDependencies:
       preact: '>=10'
 
-  preact@10.26.9:
-    resolution: {integrity: sha512-SSjF9vcnF27mJK1XyFMNJzFd5u3pQiATFqoaDy03XuN00u4ziveVVEGt5RKJrDR8MHE/wJo9Nnad56RLzS2RMA==}
+  preact@10.26.10:
+    resolution: {integrity: sha512-sqdfdSa8AZeJ+wfMYjFImIRTnhfyPSLCH+LEb1+BoRUDKLnE6AnvZeClx3Bkj2Q9nn44GFAefOKIx5oc54q93A==}
 
   prettier@2.8.7:
     resolution: {integrity: sha512-yPngTo3aXUUmyuTjeTUT75txrf+aMh9FiD7q9ZE/i6r0bPb22g4FsE6Y338PQX1bmfy08i9QQCB7/rcUAVntfw==}
@@ -2216,6 +2216,7 @@ packages:
   sitemap@8.0.0:
     resolution: {integrity: sha512-+AbdxhM9kJsHtruUF39bwS/B0Fytw6Fr1o4ZAIAEqA6cke2xcoO2GleBw9Zw7nRzILVEgz7zBM5GiTJjie1G9A==}
     engines: {node: '>=14.0.0', npm: '>=6.0.0'}
+    deprecated: 'SECURITY: Multiple vulnerabilities fixed in 8.0.1 (XML injection, path traversal, command injection, protocol injection). Upgrade immediately: npm install sitemap@8.0.1'
     hasBin: true
 
   smol-toml@1.4.1:
@@ -2642,6 +2643,7 @@ packages:
   whatwg-encoding@3.1.1:
     resolution: {integrity: sha512-6qN4hJdMwfYBtE3YBTTHhoeuUrDBPZmbQaxWAqSALV/MeEnR5z1xd8UKud2RAkFoPkmB+hli1TZSnyi84xz1vQ==}
     engines: {node: '>=18'}
+    deprecated: Use @exodus/bytes instead for a more spec-conformant and faster implementation
 
   whatwg-mimetype@4.0.0:
     resolution: {integrity: sha512-QaKxh0eNIi2mE9p2vEdzfagOKHCcj1pJ56EEHGQOVxp8r9/iszLUUV7v89x9O1p/T+NlTM5W7jW6+cz4Fq1YVg==}
@@ -2836,12 +2838,12 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/preact@4.1.0(@babel/core@7.28.0)(@types/node@24.0.10)(jiti@2.4.2)(lightningcss@1.30.1)(preact@10.26.9)(yaml@2.8.0)':
+  '@astrojs/preact@4.1.0(@babel/core@7.28.0)(@types/node@24.0.10)(jiti@2.4.2)(lightningcss@1.30.1)(preact@10.26.10)(yaml@2.8.0)':
     dependencies:
-      '@preact/preset-vite': 2.10.2(@babel/core@7.28.0)(preact@10.26.9)(vite@6.3.5(@types/node@24.0.10)(jiti@2.4.2)(lightningcss@1.30.1)(yaml@2.8.0))
-      '@preact/signals': 2.2.1(preact@10.26.9)
-      preact: 10.26.9
-      preact-render-to-string: 6.5.13(preact@10.26.9)
+      '@preact/preset-vite': 2.10.2(@babel/core@7.28.0)(preact@10.26.10)(vite@6.3.5(@types/node@24.0.10)(jiti@2.4.2)(lightningcss@1.30.1)(yaml@2.8.0))
+      '@preact/signals': 2.2.1(preact@10.26.10)
+      preact: 10.26.10
+      preact-render-to-string: 6.5.13(preact@10.26.10)
       vite: 6.3.5(@types/node@24.0.10)(jiti@2.4.2)(lightningcss@1.30.1)(yaml@2.8.0)
     transitivePeerDependencies:
       - '@babel/core'
@@ -3297,12 +3299,12 @@ snapshots:
 
   '@oslojs/encoding@1.1.0': {}
 
-  '@preact/preset-vite@2.10.2(@babel/core@7.28.0)(preact@10.26.9)(vite@6.3.5(@types/node@24.0.10)(jiti@2.4.2)(lightningcss@1.30.1)(yaml@2.8.0))':
+  '@preact/preset-vite@2.10.2(@babel/core@7.28.0)(preact@10.26.10)(vite@6.3.5(@types/node@24.0.10)(jiti@2.4.2)(lightningcss@1.30.1)(yaml@2.8.0))':
     dependencies:
       '@babel/core': 7.28.0
       '@babel/plugin-transform-react-jsx': 7.27.1(@babel/core@7.28.0)
       '@babel/plugin-transform-react-jsx-development': 7.27.1(@babel/core@7.28.0)
-      '@prefresh/vite': 2.4.8(preact@10.26.9)(vite@6.3.5(@types/node@24.0.10)(jiti@2.4.2)(lightningcss@1.30.1)(yaml@2.8.0))
+      '@prefresh/vite': 2.4.8(preact@10.26.10)(vite@6.3.5(@types/node@24.0.10)(jiti@2.4.2)(lightningcss@1.30.1)(yaml@2.8.0))
       '@rollup/pluginutils': 4.2.1
       babel-plugin-transform-hook-names: 1.0.2(@babel/core@7.28.0)
       debug: 4.4.1
@@ -3315,27 +3317,27 @@ snapshots:
 
   '@preact/signals-core@1.11.0': {}
 
-  '@preact/signals@2.2.1(preact@10.26.9)':
+  '@preact/signals@2.2.1(preact@10.26.10)':
     dependencies:
       '@preact/signals-core': 1.11.0
-      preact: 10.26.9
+      preact: 10.26.10
 
   '@prefresh/babel-plugin@0.5.2': {}
 
-  '@prefresh/core@1.5.5(preact@10.26.9)':
+  '@prefresh/core@1.5.5(preact@10.26.10)':
     dependencies:
-      preact: 10.26.9
+      preact: 10.26.10
 
   '@prefresh/utils@1.2.1': {}
 
-  '@prefresh/vite@2.4.8(preact@10.26.9)(vite@6.3.5(@types/node@24.0.10)(jiti@2.4.2)(lightningcss@1.30.1)(yaml@2.8.0))':
+  '@prefresh/vite@2.4.8(preact@10.26.10)(vite@6.3.5(@types/node@24.0.10)(jiti@2.4.2)(lightningcss@1.30.1)(yaml@2.8.0))':
     dependencies:
       '@babel/core': 7.28.0
       '@prefresh/babel-plugin': 0.5.2
-      '@prefresh/core': 1.5.5(preact@10.26.9)
+      '@prefresh/core': 1.5.5(preact@10.26.10)
       '@prefresh/utils': 1.2.1
       '@rollup/pluginutils': 4.2.1
-      preact: 10.26.9
+      preact: 10.26.10
       vite: 6.3.5(@types/node@24.0.10)(jiti@2.4.2)(lightningcss@1.30.1)(yaml@2.8.0)
     transitivePeerDependencies:
       - supports-color
@@ -5227,11 +5229,11 @@ snapshots:
       picocolors: 1.1.1
       source-map-js: 1.2.1
 
-  preact-render-to-string@6.5.13(preact@10.26.9):
+  preact-render-to-string@6.5.13(preact@10.26.10):
     dependencies:
-      preact: 10.26.9
+      preact: 10.26.10
 
-  preact@10.26.9: {}
+  preact@10.26.10: {}
 
   prettier@2.8.7:
     optional: true
