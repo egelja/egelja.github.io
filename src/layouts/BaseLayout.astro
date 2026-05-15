@@ -1,8 +1,10 @@
 ---
 import EmptyLayout from "@/layouts/EmptyLayout.astro";
 import Header from "@/components/layout/Header.astro";
-import NavLinks from "@/components/layout/NavLinks.astro";
+import Footer from "@/components/layout/Footer.astro";
+import Link from "@/components/nav/Link.astro";
 import { Icon } from "astro-icon/components";
+import { NAV_LINKS } from "@/constants";
 
 // Component args
 interface Props {
@@ -18,16 +20,17 @@ const { title = null, description = null } = Astro.props;
 <EmptyLayout title={title} description={description}>
   <div
     id="content"
-    class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 w-full min-h-screen relative z-10"
+    class="bg-blurple-50 dark:bg-blurple-900 text-gray-900 dark:text-gray-100 w-full min-h-screen relative z-10"
   >
     <Header menuIconId="menu-icon" themeToggleId="theme-toggle" />
     <main class="mx-auto max-w-3xl pt-18 sm:pt-20">
       <slot />
     </main>
+    <Footer />
   </div>
   <aside
     id="sidebar"
-    class="w-full absolute top-0 bottom-0 left-0 right-0 z-0 bg-gray-800 dark:bg-gray-950 text-white"
+    class="w-full absolute top-0 bottom-0 left-0 right-0 z-0 bg-blurple-900 dark:bg-blurple-600 text-white"
   >
     <div class="flex flex-col">
       <div class="flex-1 flex justify-end grow-0 p-5 pb-0">
@@ -38,34 +41,21 @@ const { title = null, description = null } = Astro.props;
           size="1.5rem"
         />
       </div>
-      <NavLinks style="sidebar" class="flex-1" />
+      <div class="flex-1 flex flex-col p-4 text-1.5xl">
+        <Link class="m-5" noColor noUnderline href="/">home</Link>
+        {NAV_LINKS.map(({ href, label }) => (
+          <Link class="m-5" noColor noUnderline href={href}>{label}</Link>
+        ))}
+      </div>
     </div>
   </aside>
 </EmptyLayout>
 
 <style is:global>
-  /* Suppress all transitions during page load to prevent flash */
-  html.no-transitions *,
-  html.no-transitions *::before,
-  html.no-transitions *::after {
-    transition: none !important;
-  }
-
-  /* Smooth color transitions for dark mode */
-  *,
-  *::before,
-  *::after {
-    transition:
-      background-color 0.3s ease,
-      color 0.3s ease,
-      border-color 0.3s ease;
-  }
-
   #content {
     transition:
       transform 0.25s ease-in-out,
       background-color 0.3s ease,
-      color 0.3s ease,
       border-color 0.3s ease;
   }
   .sidebar--open #content {
@@ -73,14 +63,22 @@ const { title = null, description = null } = Astro.props;
   }
   #sidebar {
     visibility: hidden;
+    /* delay hiding until content has slid back into place */
+    transition: visibility 0s 0.25s;
   }
   .sidebar--open #sidebar {
     visibility: visible;
+    transition-delay: 0s;
+  }
+  /* lock body scroll while sidebar is open */
+  html:has(.sidebar--open),
+  .sidebar--open {
+    overflow: hidden;
   }
 </style>
 
 <script>
-  document.getElementById("sidebar")?.addEventListener("click", () => {
+  document.getElementById("sidebar-close-icon")?.addEventListener("click", () => {
     document.getElementById("body")?.classList.remove("sidebar--open");
   });
 

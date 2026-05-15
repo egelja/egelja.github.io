@@ -1,0 +1,24 @@
+---
+import Link from "@/components/nav/Link.astro";
+import { NAV_LINKS } from "@/constants";
+
+const currentPath = Astro.url.pathname;
+---
+
+<nav class="grid grid-cols-3 justify-items-center gap-x-10 gap-y-4 sm:flex sm:justify-center">
+  {
+    NAV_LINKS.map(({ href, label }) => (
+      <Link
+        href={href}
+        noColor
+        class={
+          currentPath === href
+            ? "font-bold text-lg tracking-tight text-accent border-b-2 border-accent pb-1"
+            : "font-bold text-lg tracking-tight text-gray-500 dark:text-gray-400"
+        }
+      >
+        {label}
+      </Link>
+    ))
+  }
+</nav>

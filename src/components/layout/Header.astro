@@ -1,8 +1,9 @@
 ---
 import { Icon } from "astro-icon/components";
-import NavLinks from "./NavLinks.astro";
+import Link from "@/components/nav/Link.astro";
+import ThemeToggleButton from "./ThemeToggleButton.astro";
+import { NAV_LINKS } from "@/constants";
 
-// props
 interface Props {
   menuIconId: string;
   themeToggleId: string;
@@ -11,19 +12,20 @@ interface Props {
 const { menuIconId, themeToggleId } = Astro.props;
 ---
 
-<header class="fixed top-0 right-0 left-0 border-b border-b-gray-400 dark:border-b-gray-700">
+<header class="fixed top-0 right-0 left-0 border-b border-b-gray-400 dark:border-b-gray-700 bg-blurple-50 dark:bg-blurple-900">
   <nav class="mx-auto max-w-5xl flex items-center justify-between p-5 lg:px-7">
     <div class="flex-1 grow">
-      <a href="/" class="text-l sm:text-xl font-serif">
-        <strong class="font-bold text-cyan-600 dark:text-cyan-400">Nikola V.</strong> Maruszewski
+      <a href="/" class="text-xl sm:text-1.5xl font-serif">
+        <strong class="font-bold text-accent">Nikola V.</strong> Maruszewski
       </a>
     </div>
-    <NavLinks style="header" class="flex-1 mr-2 md:mr-3"/>
+    <div class="hidden sm:flex items-center justify-end gap-2 md:gap-3 mr-2 md:mr-3">
+      {NAV_LINKS.map(({ href, label }) => (
+        <Link class="grow-0" noColor href={href}>{label}</Link>
+      ))}
+    </div>
     <div class="flex items-center gap-2">
-      <button id={themeToggleId} class="cursor-pointer relative w-6 h-6">
-        <Icon class="absolute inset-0 dark:hidden" name="flowbite:moon-outline" size="1.5rem" />
-        <Icon class="absolute inset-0 hidden dark:block" name="flowbite:sun-outline" size="1.5rem" />
-      </button>
+      <ThemeToggleButton id={themeToggleId} />
       <Icon
         id={menuIconId}
         class="sm:hidden cursor-pointer"
@@ -34,11 +36,3 @@ const { menuIconId, themeToggleId } = Astro.props;
   </nav>
 </header>
 
-<style>
-  @keyframes spin-once {
-    to { rotate: 360deg; }
-  }
-  button.spinning {
-    animation: spin-once 0.4s ease-in-out;
-  }
-</style>

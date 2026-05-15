@@ -21,6 +21,30 @@
 /* Class-based dark mode */
 @variant dark (&:where(.dark, .dark *));
 
+/* Suppress all transitions during page load to prevent flash */
+html.no-transitions *,
+html.no-transitions *::before,
+html.no-transitions *::after {
+  transition: none !important;
+}
+
+/* Match safe-area / overscroll background to the page background */
+html, body {
+  background-color: var(--color-blurple-50);
+}
+html.dark, html.dark body {
+  background-color: var(--color-blurple-900);
+}
+
+/* Smooth background/border transitions for dark mode toggle */
+*,
+*::before,
+*::after {
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease;
+}
+
 /* Theme */
 @theme {
   /* Use Quicksand as sans font. */
@@ -37,4 +61,25 @@
 
   /* Custom font sizes */
   --text-1\.5xl: 1.375rem;
+
+  /* Blurple palette */
+  --color-blurple-50:  #f0f0ff;
+  --color-blurple-100: #e0e0ff;
+  --color-blurple-200: #c8c8fe;
+  --color-blurple-300: #a5a5fe;
+  --color-blurple-400: #8585f8;
+  --color-blurple-500: #6565ec;
+  --color-blurple-600: #4d4dcc;
+  --color-blurple-700: #3838a8;
+  --color-blurple-800: #242480;
+  --color-blurple-900: #101126;
+  --color-blurple-950: #0b0c1f;
+
+  /* Accent — maps to blurple-600 in light mode */
+  --color-accent: #4d4dcc;
+}
+
+/* Accent shifts to blurple-300 in dark mode */
+.dark {
+  --color-accent: #a5a5fe;
 }

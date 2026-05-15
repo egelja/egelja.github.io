@@ -9,8 +9,7 @@ interface Props {
   href: string;
 
   // Styling
-  class: any;
-
+  class?: any;
   noUnderline?: boolean;
   noColor?: boolean;
 
@@ -30,6 +29,9 @@ const {
 const url = new URL(href, Astro.site);
 const outgoing = url.host != Astro.site!.host;
 
+// Active state
+const isActive = !outgoing && Astro.url.pathname === href;
+
 // Add attributes to outgoing URLs
 const target = outgoing ? "_blank" : "_self"; // _self is default
 const rel = outgoing ? "noopener noreferrer" : undefined;
@@ -37,7 +39,7 @@ const rel = outgoing ? "noopener noreferrer" : undefined;
 // Style attributes
 const linkVariants = cva(["inline-flex", "items-center", "py-0.25"], {
   variants: {
-    color: { false: null, true: ["text-blue-500", "dark:text-blue-400"] },
+    color: { false: null, true: ["text-accent"] },
     outgoing: { false: ["px-0.5"], true: ["pl-1"] },
   },
 });
@@ -54,6 +56,7 @@ const linkClasses = twMerge(
   target={target}
   rel={rel}
   data-underline={!noUnderline}
+  aria-current={isActive ? "page" : undefined}
 >
   <span><slot /></span>
   {
@@ -71,19 +74,18 @@ const linkClasses = twMerge(
     Posted by Temani Afif, modified by community. See post 'Timeline' for change history
     Retrieved 2026-02-11, License - CC BY-SA 4.0
   */
-  #link[data-underline="true"] {
-    --link-underline-color: var(--color-cyan-500);
-    background: linear-gradient(var(--link-underline-color) 0 0) bottom left/
-      var(--underline-width, 0%) 0.1em no-repeat;
-    transition:
-      background-size 0.5s,
-      color 0.5s;
-  }
-  #link[data-underline="true"]:hover {
-    --underline-width: 100%;
-    /*     color: var(--color-cyan-600); */
-  }
-  :global(.dark) #link[data-underline="true"] {
-    --link-underline-color: var(--color-cyan-400);
+  @media (hover: hover) {
+    #link:hover {
+      color: var(--color-accent);
+    }
+    #link[data-underline="true"] {
+      --link-underline-color: var(--color-accent);
+      background: linear-gradient(var(--link-underline-color) 0 0) bottom left/
+        var(--underline-width, 0%) 0.1em no-repeat;
+      transition: background-size 0.5s;
+    }
+    #link[data-underline="true"]:hover {
+      --underline-width: 100%;
+    }
   }
 </style>
