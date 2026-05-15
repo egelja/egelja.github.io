@@ -1,0 +1,49 @@
+---
+import Link from "@/components/nav/Link.astro";
+
+import { twMerge } from "tailwind-merge";
+
+// Properties of this elemetn
+interface Props {
+  // definition
+  style: "header" | "sidebar";
+
+  // passed in classes
+  class?: string;
+}
+
+const { style, class: className } = Astro.props;
+
+// Determine classes
+let divClass, linkClass, noUnderline;
+
+if (style == "header") {
+  // Wide screen, horizontal layout, hide when small screen
+  divClass = "hidden sm:flex items-center justify-end gap-3 grow-0";
+  linkClass = "flex-1 grow-0";
+  noUnderline = false;
+} else {
+  divClass = "flex flex-col p-4 text-1.5xl";
+  linkClass = "m-5";
+  noUnderline = true; // underline don't make sense on mobile
+}
+---
+
+<div class={twMerge(className, divClass)}>
+  {
+    // Show home link only in sidebar
+    style == "sidebar" && (
+      <Link class={linkClass} noColor {noUnderline} href="/">
+        home
+      </Link>
+    )
+  }
+  <!-- Remaining links -->
+  <Link class={linkClass} noColor {noUnderline} href="/about/">about</Link>
+  <Link class={linkClass} noColor {noUnderline} href="/pubs/">pubs</Link>
+  <Link class={linkClass} noColor {noUnderline} href="/projects/">projects</Link
+  >
+  <Link class={linkClass} noColor {noUnderline} href="/blog/">blog</Link>
+  <Link class={linkClass} noColor {noUnderline} href="/contact/">contact</Link>
+  <Link class={linkClass} noColor {noUnderline} href="/cv/">cv</Link>
+</div>

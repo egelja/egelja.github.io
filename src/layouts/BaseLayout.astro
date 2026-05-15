@@ -1,6 +1,8 @@
 ---
 import EmptyLayout from "@/layouts/EmptyLayout.astro";
 import Header from "@/components/layout/Header.astro";
+import NavLinks from "@/components/layout/NavLinks.astro";
+import { Icon } from "astro-icon/components";
 
 // Component args
 interface Props {
@@ -14,7 +16,7 @@ const { title = null, description = null } = Astro.props;
 ---
 
 <EmptyLayout title={title} description={description}>
-  <div id="content" class="bg-white w-full relative z-10">
+  <div id="content" class="bg-white w-full min-h-screen relative z-10">
     <Header menuIconId="menu-icon" />
     <main class="mx-auto max-w-3xl pt-18 sm:pt-20">
       <slot />
@@ -24,7 +26,17 @@ const { title = null, description = null } = Astro.props;
     id="sidebar"
     class="w-full absolute top-0 bottom-0 left-0 right-0 z-0 bg-gray-700 text-white"
   >
-    SIDEBAR
+    <div class="flex flex-col">
+      <div class="flex-1 flex justify-end grow-0 p-5 pb-0">
+        <Icon
+          id="sidebar-close-icon"
+          class="cursor-pointer"
+          name="flowbite:close-outline"
+          size="1.5rem"
+        />
+      </div>
+      <NavLinks style="sidebar" class="flex-1" />
+    </div>
   </aside>
 </EmptyLayout>
 

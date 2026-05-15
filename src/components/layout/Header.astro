@@ -2,6 +2,7 @@
 import Link from "@/components/nav/Link.astro";
 
 import { Icon } from "astro-icon/components";
+import NavLinks from "./NavLinks.astro";
 
 // props
 interface Props {
@@ -18,10 +19,7 @@ const { menuIconId } = Astro.props;
         <strong class="font-bold text-cyan-600">Nikola V.</strong> Maruszewski
       </a>
     </div>
-    <div class="flex-1 hidden sm:flex items-center justify-end gap-3 grow-0">
-      <Link class="flex-1 grow-0" noColor href="/">home</Link>
-      <Link class="flex-1 grow-0" noColor href="/about/"> about </Link>
-    </div>
+    <NavLinks style="header" class="flex-1"/>
     <div class="flex-1 sm:hidden flex justify-end grow-0">
       <Icon
         id={menuIconId}
