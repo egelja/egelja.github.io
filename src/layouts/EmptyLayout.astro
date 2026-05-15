@@ -36,8 +36,26 @@ const fullDescription = description == null ? DEFAULT_DESCRIPTION : description;
 
     <!-- Web analytics -->
     <!-- TODO -->
+
+    <!-- Dark mode switch. -->
+    <script is:inline>
+      const stored = localStorage.getItem("theme");
+      const prefersDark = window.matchMedia(
+        "(prefers-color-scheme: dark)",
+      ).matches;
+      if (stored === "dark" || (!stored && prefersDark)) {
+        document.documentElement.classList.add("dark");
+      }
+      
+      // Block transitions during initial paint to prevent flash
+      document.documentElement.classList.add("no-transitions");
+      requestAnimationFrame(() =>
+        requestAnimationFrame(() =>
+          document.documentElement.classList.remove("no-transitions"),
+        ),
+      );
+    </script>
   </head>
-  <!-- TODO dark mode -->
   <body id="body">
     <slot />
   </body>
