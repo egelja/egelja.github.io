@@ -1,5 +1,5 @@
 ---
-import Link from "../Link.astro";
+import Link from "@/components/nav/Link.astro";
 
 import { Icon } from "astro-icon/components";
 
@@ -11,22 +11,18 @@ interface Props {
 const { menuIconId } = Astro.props;
 ---
 
-<header
-  class="fixed top-0 right-0 left-0 bg-white border-b-1 border-b-gray-400"
->
+<header class="fixed top-0 right-0 left-0 bg-white border-b border-b-gray-400">
   <nav class="mx-auto max-w-5xl flex items-center justify-between p-5 lg:px-7">
     <div class="flex-1 grow">
       <a href="/" class="text-l sm:text-xl font-serif">
-        <strong class="font-bold text-cyan-600">Nikola</strong> V. Maruszewski
+        <strong class="font-bold text-cyan-600">Nikola V.</strong> Maruszewski
       </a>
     </div>
     <div class="flex-1 hidden sm:flex items-center justify-end gap-3 grow-0">
-      <Link class="flex-1 grow-0" noColor noUnderline href="/">home</Link>
-      <Link class="flex-1 grow-0" noColor noUnderline href="/about/">
-        about
-      </Link>
+      <Link class="flex-1 grow-0" noColor href="/">home</Link>
+      <Link class="flex-1 grow-0" noColor href="/about/"> about </Link>
     </div>
-    <div class="flex-1 block sm:hidden flex justify-end grow-0">
+    <div class="flex-1 sm:hidden flex justify-end grow-0">
       <Icon
         id={menuIconId}
         class="cursor-pointer"

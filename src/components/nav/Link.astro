@@ -35,23 +35,30 @@ const target = outgoing ? "_blank" : "_self"; // _self is default
 const rel = outgoing ? "noopener noreferrer" : undefined;
 
 // Style attributes
-const linkVariants = cva(["inline-flex", "items-center"], {
+const linkVariants = cva(["inline-flex", "items-center", "py-0.25"], {
   variants: {
-    underline: { false: null, true: ["hover:underline", "underline-offset-4"] },
     color: { false: null, true: ["text-blue-500"] },
+    outgoing: { false: ["px-0.5"], true: ["pl-1"] },
   },
 });
 
 const linkClasses = twMerge(
-  linkVariants({ className, underline: !noUnderline, color: !noColor })
+  linkVariants({ className, color: !noColor, outgoing }),
 );
 ---
 
-<a id="link" href={href} class={linkClasses} target={target} rel={rel}>
+<a
+  id="link"
+  href={href}
+  class={linkClasses}
+  target={target}
+  rel={rel}
+  data-underline={!noUnderline}
+>
   <span><slot /></span>
   {
     outgoing && (
-      <span id="icon-span" class="p-0.5 pb-0" data-underline={!noUnderline}>
+      <span id="icon-span" class="p-0.5 pb-0">
         <Icon name="flowbite:arrow-up-right-from-square-outline" />
       </span>
     )
@@ -59,21 +66,20 @@ const linkClasses = twMerge(
 </a>
 
 <style>
-  /* https://stackoverflow.com/a/48693294 */
-  #icon-span {
-    position: relative;
-    display: inline-block;
-    vertical-align: bottom;
-    text-underline-offset: 1px;
+  /*
+  Source - https://stackoverflow.com/a/62872785
+    Posted by Temani Afif, modified by community. See post 'Timeline' for change history
+    Retrieved 2026-02-11, License - CC BY-SA 4.0
+  */
+  #link[data-underline="true"] {
+    background: linear-gradient(var(--color-cyan-500) 0 0) bottom left/
+      var(--underline-width, 0%) 0.1em no-repeat;
+    transition:
+      background-size 0.5s,
+      color 0.5s;
   }
-  #link:hover #icon-span[data-underline="true"]::after {
-    content: "\00a0";
-    position: absolute;
-    text-decoration: underline;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    top: 0;
-    letter-spacing: 14px; /* adjust for icon */
+  #link[data-underline="true"]:hover {
+    --underline-width: 100%;
+    /*     color: var(--color-cyan-600); */
   }
 </style>
