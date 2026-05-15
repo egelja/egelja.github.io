@@ -1,8 +1,13 @@
 ---
+const currentYear = new Date().getFullYear();
+const lastUpdated = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
 ---
 
 <footer class="w-full py-10">
   <p class="text-center text-xs tracking-widest uppercase text-gray-400 opacity-60">
-    &copy; Nikola V. Maruszewski.
+    &copy; 2025 &ndash; {currentYear} Nikola V. Maruszewski.
+  </p>
+  <p class="text-center text-xs tracking-widest uppercase text-gray-400 opacity-60 mt-2">
+    Last Updated: {lastUpdated}
   </p>
 </footer>
