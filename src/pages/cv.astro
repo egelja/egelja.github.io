@@ -4,7 +4,9 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 
 <BaseLayout title="CV">
   <div class="flex items-center justify-between mb-6">
-    <h1 class="font-serif font-extrabold text-4xl leading-tight text-gray-900 dark:text-gray-100">
+    <h1
+      class="font-serif font-extrabold text-4xl leading-tight text-gray-900 dark:text-gray-100"
+    >
       CV
     </h1>
     <a
@@ -16,15 +18,27 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
     </a>
   </div>
 
-  <iframe
+  <!--   <iframe
     src="/cv-Nikola_Maruszewski.pdf"
     class="w-full rounded-lg border border-gray-200 dark:border-gray-700"
     style="height: calc(100vh - 220px); min-height: 600px;"
     title="Nikola V. Maruszewski — CV"
-  >
-    <p class="text-gray-700 dark:text-gray-300">
-      PDF viewer not supported.
-      <a href="/cv-Nikola_Maruszewski.pdf" class="underline">Download CV</a> instead.
-    </p>
-  </iframe>
+    set:html={`
+      <p class="text-gray-700 dark:text-gray-300">
+        PDF viewer not supported. <a href="/cv-Nikola_Maruszewski.pdf" class="underline">Download CV</a> instead.
+      </p>
+    `}
+  /> -->
+
+  <iframe
+    src="/cv-Nikola_Maruszewski.pdf"
+    class="w-full rounded-lg border border-gray-200 dark:border-gray-700"
+    style="height: calc(100vh - 220px); min-height: 600px;"
+    title="Nikola V. Maruszewski — CV"></iframe>
+  <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">
+    PDF viewer not loading? <a
+      href="/cv-Nikola_Maruszewski.pdf"
+      class="underline font-medium">Download CV directly</a
+    >.
+  </p>
 </BaseLayout>
