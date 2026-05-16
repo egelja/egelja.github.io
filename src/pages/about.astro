@@ -146,11 +146,11 @@ const hasMore = newsItems.length > NEWS_DEFAULT_COUNT;
         .getElementById("copy-bio-btn")
         ?.addEventListener("click", async (e) => {
           const btn = e.currentTarget as HTMLButtonElement;
+          const bio = document.getElementById("bio-text");
+          const clone = bio?.cloneNode(true) as HTMLElement | undefined;
+          clone?.querySelectorAll("svg").forEach((el) => el.remove());
           const text =
-            document
-              .getElementById("bio-text")
-              ?.textContent?.replace(/\s+/g, " ")
-              .trim() ?? "";
+            clone?.textContent?.replace(/\s+/g, " ").trim() ?? "";
 
           let success = false;
           if (navigator.clipboard?.writeText) {
