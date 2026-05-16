@@ -41,9 +41,10 @@ interface Props {
   badges?: BadgeKey[];
   arxiv?: string;
   doi?: string;
+  equalContributorIndices?: number[];
 }
 
-const { title, authors, venue, date, pdf, badges, arxiv, doi } = Astro.props;
+const { title, authors, venue, date, pdf, badges, arxiv, doi, equalContributorIndices } = Astro.props;
 
 const dateStr = date.toLocaleDateString("en-US", {
   month: "2-digit",
@@ -57,18 +58,27 @@ const dateStr = date.toLocaleDateString("en-US", {
     {title}
   </h2>
 
-  <p class="text-sm text-gray-700 dark:text-gray-300 max-w-2xl leading-relaxed">
-    {authors.map((author, i) => (
-      <>
-        {i > 0 && <span class="text-gray-400 dark:text-gray-500">,{" "}</span>}
-        {author === MY_NAME ? (
-          <em class="italic font-semibold text-accent">{author}</em>
-        ) : (
-          <span>{author}</span>
-        )}
-      </>
-    ))}
-  </p>
+  <div class="flex flex-col items-center gap-2">
+    <p class="text-sm text-gray-700 dark:text-gray-300 max-w-2xl leading-relaxed">
+      {authors.map((author, i) => (
+        <>
+          {i > 0 && <span class="text-gray-400 dark:text-gray-500">,{" "}</span>}
+          {author === MY_NAME ? (
+            <em class="italic font-semibold text-accent">{author}{equalContributorIndices?.includes(i) ? "*" : ""}</em>
+          ) : (
+            <span>{author}{equalContributorIndices?.includes(i) ? "*" : ""}</span>
+          )}
+        </>
+      ))}
+    </p>
+    {equalContributorIndices && equalContributorIndices.length > 0 && (
+      <div>
+        <p class="text-xs text-gray-500 dark:text-gray-400 mt-1 equal-contrib-note">
+          (* denotes equal contribution)
+        </p>
+      </div>
+    )}
+  </div>
 
   <div class="flex flex-col items-center gap-0.5">
     <span class="text-sm text-gray-500 dark:text-gray-400">{venue}</span>

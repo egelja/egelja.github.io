@@ -33,6 +33,7 @@ const pubs = defineCollection({
       .optional(),
     arxiv: z.string().optional(),
     doi: z.string().optional(),
+    equalContributorIndices: z.array(z.number()).optional(),
   }),
 });
 

@@ -10,26 +10,35 @@ const pubs = (await getCollection("pubs")).sort(
 
 <BaseLayout title="Publications">
   <section>
-    <h1 class="font-serif font-extrabold text-4xl leading-tight mb-2 text-gray-900 dark:text-gray-100">
+    <h1
+      class="font-serif font-extrabold text-4xl leading-tight mb-2 text-gray-900 dark:text-gray-100"
+    >
       Publications
     </h1>
     <p class="text-gray-500 dark:text-gray-400 text-sm mb-2">
-      <em class="not-italic italic font-semibold text-accent">Nikola Vuk Maruszewski</em> — italicized where appearing as author.
+      <em class="not-italic italic font-semibold text-accent"
+        >Nikola Vuk Maruszewski</em
+      > — italicized where appearing as author.
     </p>
   </section>
 
-  <div class="mt-10 divide-y-2 divide-blurple-600 dark:divide-blurple-400 border-t-2 border-b-2 border-blurple-600 dark:border-blurple-400">
-    {pubs.map((pub) => (
-      <PubCard
-        title={pub.data.title}
-        authors={pub.data.authors}
-        venue={pub.data.venue}
-        date={pub.data.date}
-        pdf={pub.data.pdf}
-        badges={pub.data.badges}
-        arxiv={pub.data.arxiv}
-        doi={pub.data.doi}
-      />
-    ))}
+  <div
+    class="mt-10 divide-y-2 divide-blurple-600 dark:divide-blurple-400 border-t-2 border-b-2 border-blurple-600 dark:border-blurple-400"
+  >
+    {
+      pubs.map((pub) => (
+        <PubCard
+          title={pub.data.title}
+          authors={pub.data.authors}
+          venue={pub.data.venue}
+          date={pub.data.date}
+          pdf={pub.data.pdf}
+          badges={pub.data.badges}
+          arxiv={pub.data.arxiv}
+          doi={pub.data.doi}
+          equalContributorIndices={pub.data.equalContributorIndices}
+        />
+      ))
+    }
   </div>
 </BaseLayout>

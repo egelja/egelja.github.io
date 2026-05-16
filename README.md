@@ -45,3 +45,18 @@ All commands are run from the root of the project, from a terminal:
 ## 👀 Want to learn more?
 
 Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+
+## ⚠️ Deployment Notes
+
+### Cloudflare: Rocket Loader must be OFF
+
+`marusz.com` is fronted by Cloudflare. **Rocket Loader breaks this site** and must remain disabled.
+
+Why: Rocket Loader rewrites `<script>` tags (mangling `type="module"` → `type="<token>-module"` and deferring execution). This breaks:
+
+- Astro's `ClientRouter` view transitions
+- Inline init scripts in `EmptyLayout.astro` (dark mode) and `BaseLayout.astro` (theme toggle, hamburger nav)
+
+In-code workarounds (`is:inline data-cfasync="false"`) only cover layout-level scripts; the external `ClientRouter` bundle still gets mangled because Astro emits that script tag itself. Disabling Rocket Loader is the only complete fix.
+
+**Where to toggle:** Cloudflare Dashboard → `marusz.com` → Speed → Optimization → Content Optimization → **Rocket Loader: Off**.
