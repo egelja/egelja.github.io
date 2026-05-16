@@ -9,6 +9,8 @@ import preact from "@astrojs/preact";
 import mdx from "@astrojs/mdx";
 import icon from "astro-icon";
 
+import playformCompress from "@playform/compress";
+
 const CV_URL = "https://raw.githubusercontent.com/egelja/resume/refs/heads/master/cv/cv-Nikola_Maruszewski.pdf";
 const CV_FILENAME = CV_URL.split("/").at(-1);
 const CV_OUT = new URL(`./public/${CV_FILENAME}`, import.meta.url);
@@ -35,7 +37,7 @@ export default defineConfig({
   base: "/",
   trailingSlash: "always",
 
-  integrations: [sitemap(), preact(), mdx(), icon(), downloadCV()],
+  integrations: [sitemap(), preact(), mdx(), icon(), downloadCV(), playformCompress()],
 
   vite: {
     plugins: [tailwindcss()],
