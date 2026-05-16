@@ -43,35 +43,38 @@ const fullDescription = description == null ? DEFAULT_DESCRIPTION : description;
 
     <!-- Dark mode switch. -->
     <script>
-      const stored = localStorage.getItem("theme");
-      const prefersDark = window.matchMedia(
-        "(prefers-color-scheme: dark)",
-      ).matches;
-      if (stored === "dark" || (!stored && prefersDark)) {
-        document.documentElement.classList.add("dark");
-      } else {
-        document.documentElement.classList.remove("dark");
-      }
+      const updateDarkMode = () => {
+        const stored = localStorage.getItem("theme");
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)",
+        ).matches;
+        if (stored === "dark" || (!stored && prefersDark)) {
+          document.documentElement.classList.add("dark");
+        } else {
+          document.documentElement.classList.remove("dark");
+        }
+
+        // Re-enable transitions once page has safely loaded
+        requestAnimationFrame(() =>
+          requestAnimationFrame(() =>
+            document.documentElement.classList.remove("no-transitions"),
+          ),
+        );
+      };
 
       // Block transitions during initial paint to prevent flash
       document.documentElement.classList.add("no-transitions");
-      requestAnimationFrame(() =>
-        requestAnimationFrame(() =>
-          document.documentElement.classList.remove("no-transitions"),
-        ),
-      );
+
+      // Set dark mode
+      updateDarkMode();
 
       // Suppress color transitions during view transition swap to prevent flicker
       document.addEventListener("astro:before-swap", () =>
         document.documentElement.classList.add("no-transitions"),
       );
-      document.addEventListener("astro:after-swap", () =>
-        requestAnimationFrame(() =>
-          requestAnimationFrame(() =>
-            document.documentElement.classList.remove("no-transitions"),
-          ),
-        ),
-      );
+
+      // Ensure dark mode is set after navigation
+      document.addEventListener("astro:after-swap", updateDarkMode);
     </script>
   </head>
   <body id="body">
