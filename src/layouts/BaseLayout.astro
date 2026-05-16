@@ -33,7 +33,7 @@ const { title = null, description = null } = Astro.props;
   </div>
   <aside
     id="sidebar"
-    class="w-full fixed inset-0 z-0 bg-blurple-900 dark:bg-blurple-600 text-white"
+    class="w-full fixed inset-0 -z-10 bg-blurple-900 dark:bg-blurple-600 text-white overflow-hidden"
   >
     <div class="flex flex-col">
       <div class="flex-1 flex justify-end grow-0 p-5 pb-0">
@@ -69,12 +69,9 @@ const { title = null, description = null } = Astro.props;
     }
     #sidebar {
       visibility: hidden;
-      /* delay hiding until content has slid back into place */
-      transition: visibility 0s 0.25s;
     }
     .sidebar--open #sidebar {
       visibility: visible;
-      transition-delay: 0s;
     }
     /* lock body scroll while sidebar is open */
     html:has(.sidebar--open),
