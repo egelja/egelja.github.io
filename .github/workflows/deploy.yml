@@ -27,9 +27,9 @@ jobs:
       - name: Install, build, and upload your site
         uses: withastro/action@v3
         # Optional: You can specify node-version or path if your astro app is in a subdirectory
-        # with:
-        #   path: .
-        #   node-version: 20
+        with:
+          node-version: 24
+          # path: .
 
       - name: Deploy to GitHub Pages
         id: deployment
