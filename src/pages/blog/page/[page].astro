@@ -1,0 +1,55 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import PostItem from "@/components/blog/PostItem.astro";
+import Pagination from "@/components/shared/Pagination.astro";
+
+export async function getStaticPaths() {
+  const ITEMS_PER_PAGE = 10;
+
+  const allPosts = (await getCollection("blog"))
+    .filter((p) => !p.data.draft)
+    .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+  const totalPages = Math.ceil(allPosts.length / ITEMS_PER_PAGE);
+
+  return Array.from({ length: Math.max(0, totalPages - 1) }, (_, i) => i + 2).map(
+    (page) => ({
+      params: { page: String(page) },
+      props: {
+        posts: allPosts.slice(
+          (page - 1) * ITEMS_PER_PAGE,
+          page * ITEMS_PER_PAGE,
+        ),
+        currentPage: page,
+        totalPages,
+      },
+    }),
+  );
+}
+
+const { posts, currentPage, totalPages } = Astro.props;
+---
+
+<BaseLayout title={`Blog — Page ${currentPage}`}>
+  <section>
+    <h1
+      class="font-serif font-extrabold text-4xl leading-tight mb-2 text-gray-900 dark:text-gray-100"
+    >
+      Blog
+    </h1>
+  </section>
+
+  <div
+    class="mt-10 divide-y divide-blurple-600 dark:divide-blurple-400 border-t-2 border-b-2 border-blurple-600 dark:border-blurple-400"
+  >
+    {posts.map((post) => <PostItem post={post} />)}
+  </div>
+
+  <Pagination
+    currentPage={currentPage}
+    totalPages={totalPages}
+    basePath="/blog"
+    pageBasePath="/blog/page"
+  />
+</BaseLayout>
