@@ -11,4 +11,28 @@ const news = defineCollection({
   }),
 });
 
-export const collections = { news };
+const pubs = defineCollection({
+  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/pubs" }),
+  schema: z.object({
+    title: z.string(),
+    authors: z.array(z.string()),
+    venue: z.string(),
+    date: z.coerce.date(),
+    pdf: z.string().optional(),
+    badges: z
+      .array(
+        z.enum([
+          "acm-available",
+          "acm-functional",
+          "acm-reusable",
+          "acm-reproduced",
+          "acm-replicated",
+        ]),
+      )
+      .optional(),
+    arxiv: z.string().optional(),
+    doi: z.string().optional(),
+  }),
+});
+
+export const collections = { news, pubs };
