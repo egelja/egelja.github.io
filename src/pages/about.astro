@@ -118,38 +118,43 @@ const hasMore = newsItems.length > NEWS_DEFAULT_COUNT;
 </BaseLayout>
 
 <script>
-  document.getElementById("copy-bio-btn")?.addEventListener("click", async (e) => {
-    const btn = e.currentTarget as HTMLButtonElement;
-    const text = document.getElementById("bio-text")?.textContent?.replace(/\s+/g, " ").trim() ?? "";
+  function setupAboutPage() {
+    document.getElementById("copy-bio-btn")?.addEventListener("click", async (e) => {
+      const btn = e.currentTarget as HTMLButtonElement;
+      const text = document.getElementById("bio-text")?.textContent?.replace(/\s+/g, " ").trim() ?? "";
 
-    let success = false;
-    if (navigator.clipboard?.writeText) {
-      try {
-        await navigator.clipboard.writeText(text);
-        success = true;
-      } catch {}
-    }
-    if (!success) {
-      const ta = document.createElement("textarea");
-      ta.value = text;
-      ta.style.cssText = "position:fixed;left:0;top:0;opacity:0;pointer-events:none";
-      document.body.appendChild(ta);
-      ta.focus();
-      ta.setSelectionRange(0, ta.value.length);
-      try { success = document.execCommand("copy"); } finally { document.body.removeChild(ta); }
-    }
+      let success = false;
+      if (navigator.clipboard?.writeText) {
+        try {
+          await navigator.clipboard.writeText(text);
+          success = true;
+        } catch {}
+      }
+      if (!success) {
+        const ta = document.createElement("textarea");
+        ta.value = text;
+        ta.style.cssText = "position:fixed;left:0;top:0;opacity:0;pointer-events:none";
+        document.body.appendChild(ta);
+        ta.focus();
+        ta.setSelectionRange(0, ta.value.length);
+        try { success = document.execCommand("copy"); } finally { document.body.removeChild(ta); }
+      }
 
-    if (success) {
-      btn.textContent = "Copied!";
-      setTimeout(() => (btn.textContent = "Copy bio"), 2000);
-    }
-  });
+      if (success) {
+        btn.textContent = "Copied!";
+        setTimeout(() => (btn.textContent = "Copy bio"), 2000);
+      }
+    });
 
-  document.getElementById("news-more-btn")?.addEventListener("click", (e) => {
-    const hidden = document.querySelectorAll("[data-news-item].hidden");
-    Array.from(hidden).slice(0, 5).forEach((el) => el.classList.remove("hidden"));
-    if (document.querySelectorAll("[data-news-item].hidden").length === 0) {
-      (e.currentTarget as HTMLElement).remove();
-    }
-  });
+    document.getElementById("news-more-btn")?.addEventListener("click", (e) => {
+      const hidden = document.querySelectorAll("[data-news-item].hidden");
+      Array.from(hidden).slice(0, 5).forEach((el) => el.classList.remove("hidden"));
+      if (document.querySelectorAll("[data-news-item].hidden").length === 0) {
+        (e.currentTarget as HTMLElement).remove();
+      }
+    });
+  }
+
+  setupAboutPage();
+  document.addEventListener("astro:page-load", setupAboutPage);
 </script>

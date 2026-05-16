@@ -29,15 +29,20 @@ import ThemeToggleButton from "@/components/layout/ThemeToggleButton.astro";
 </EmptyLayout>
 
 <script>
-  const toggle = document.getElementById("theme-toggle-landing");
-  toggle?.addEventListener("click", () => {
-    const isDark = document.documentElement.classList.toggle("dark");
-    localStorage.setItem("theme", isDark ? "dark" : "light");
-    toggle.classList.add("spinning");
-    toggle.addEventListener(
-      "animationend",
-      () => toggle.classList.remove("spinning"),
-      { once: true },
-    );
-  });
+  function setupLandingPage() {
+    const toggle = document.getElementById("theme-toggle-landing");
+    toggle?.addEventListener("click", () => {
+      const isDark = document.documentElement.classList.toggle("dark");
+      localStorage.setItem("theme", isDark ? "dark" : "light");
+      toggle.classList.add("spinning");
+      toggle.addEventListener(
+        "animationend",
+        () => toggle.classList.remove("spinning"),
+        { once: true },
+      );
+    });
+  }
+
+  setupLandingPage();
+  document.addEventListener("astro:page-load", setupLandingPage);
 </script>

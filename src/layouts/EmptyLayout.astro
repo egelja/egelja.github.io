@@ -3,6 +3,7 @@ import "@/styles/global.css";
 
 import Head from "@/components/layout/Head.astro";
 import Header from "@/components/layout/Header.astro";
+import { ClientRouter } from "astro:transitions";
 
 import { DEFAULT_TITLE, DEFAULT_DESCRIPTION } from "@/constants.ts";
 
@@ -34,6 +35,9 @@ const fullDescription = description == null ? DEFAULT_DESCRIPTION : description;
     <!-- Dynamic meta tags -->
     <Head title={fullTitle} description={fullDescription} />
 
+    <!-- View transitions router -->
+    <ClientRouter />
+
     <!-- Web analytics -->
     <!-- TODO -->
 
@@ -46,12 +50,24 @@ const fullDescription = description == null ? DEFAULT_DESCRIPTION : description;
       if (stored === "dark" || (!stored && prefersDark)) {
         document.documentElement.classList.add("dark");
       }
-      
+
       // Block transitions during initial paint to prevent flash
       document.documentElement.classList.add("no-transitions");
       requestAnimationFrame(() =>
         requestAnimationFrame(() =>
           document.documentElement.classList.remove("no-transitions"),
+        ),
+      );
+
+      // Suppress color transitions during view transition swap to prevent flicker
+      document.addEventListener('astro:before-swap', () =>
+        document.documentElement.classList.add("no-transitions"),
+      );
+      document.addEventListener('astro:after-swap', () =>
+        requestAnimationFrame(() =>
+          requestAnimationFrame(() =>
+            document.documentElement.classList.remove("no-transitions"),
+          ),
         ),
       );
     </script>
