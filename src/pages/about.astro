@@ -150,7 +150,10 @@ const hasMore = newsItems.length > NEWS_DEFAULT_COUNT;
           const clone = bio?.cloneNode(true) as HTMLElement | undefined;
           clone?.querySelectorAll("svg").forEach((el) => el.remove());
           const text =
-            clone?.textContent?.replace(/\s+/g, " ").trim() ?? "";
+            clone?.textContent
+              ?.replace(/\s+/g, " ")
+              .replace(/\s+([,.;:!?])/g, "$1")
+              .trim() ?? "";
 
           let success = false;
           if (navigator.clipboard?.writeText) {
