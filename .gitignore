@@ -17,6 +17,9 @@ pnpm-debug.log*
 .env
 .env.production
 
+# downloaded assets
+public/cv-Nikola_Maruszewski.pdf
+
 # macOS-specific files
 .DS_Store
 

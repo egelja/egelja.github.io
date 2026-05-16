@@ -1,0 +1,30 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="CV">
+  <div class="flex items-center justify-between mb-6">
+    <h1 class="font-serif font-extrabold text-4xl leading-tight text-gray-900 dark:text-gray-100">
+      CV
+    </h1>
+    <a
+      href="/cv-Nikola_Maruszewski.pdf"
+      download
+      class="text-xs font-bold uppercase tracking-widest text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-100 transition-colors"
+    >
+      Download
+    </a>
+  </div>
+
+  <iframe
+    src="/cv-Nikola_Maruszewski.pdf"
+    class="w-full rounded-lg border border-gray-200 dark:border-gray-700"
+    style="height: calc(100vh - 220px); min-height: 600px;"
+    title="Nikola V. Maruszewski — CV"
+  >
+    <p class="text-gray-700 dark:text-gray-300">
+      PDF viewer not supported.
+      <a href="/cv-Nikola_Maruszewski.pdf" class="underline">Download CV</a> instead.
+    </p>
+  </iframe>
+</BaseLayout>
