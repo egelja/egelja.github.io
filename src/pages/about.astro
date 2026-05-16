@@ -10,21 +10,25 @@ import profPic from "@/images/prof_pic.jpg";
 const NEWS_DEFAULT_COUNT = 5;
 
 const newsItems = (await getCollection("news")).sort(
-  (a, b) => b.data.date.getTime() - a.data.date.getTime()
+  (a, b) => b.data.date.getTime() - a.data.date.getTime(),
 );
 const hasMore = newsItems.length > NEWS_DEFAULT_COUNT;
 ---
 
 <BaseLayout title="About">
   <!-- Hero -->
-  <section class="grid grid-cols-1 md:grid-cols-12 gap-12 pb-10 md:pb-16 items-start">
+  <section
+    class="grid grid-cols-1 md:grid-cols-12 gap-12 pb-10 md:pb-16 items-start"
+  >
     <div class="md:col-span-8">
       <h1
         class="font-serif font-extrabold text-4xl leading-tight mb-8 text-gray-900 dark:text-gray-100"
       >
         About Me
       </h1>
-      <div class="max-w-2xl space-y-4 text-gray-700 dark:text-gray-300 leading-relaxed">
+      <div
+        class="max-w-2xl space-y-4 text-gray-700 dark:text-gray-300 leading-relaxed"
+      >
         <p id="bio-text">
           Nikola Vuk Maruszewski is a PhD student in Computer Science at
           <Link href="https://gatech.edu">Georgia Tech</Link>, advised by
@@ -35,7 +39,9 @@ const hasMore = newsItems.length > NEWS_DEFAULT_COUNT;
           Engineering from
           <Link href="https://northwestern.edu">Northwestern University</Link>,
           where he worked with
-          <Link href="https://users.cs.northwestern.edu/~hardav/">Prof. Nikos Hardavellas</Link>
+          <Link href="https://users.cs.northwestern.edu/~hardav/"
+            >Prof. Nikos Hardavellas</Link
+          >
           in the
           <Link href="https://paragon.cs.northwestern.edu/">PARAG@N Lab</Link>.
           His work there spanned prefetching for linked data structures and
@@ -61,38 +67,56 @@ const hasMore = newsItems.length > NEWS_DEFAULT_COUNT;
         />
       </div>
       <div class="mt-8">
-        <span class="block text-xs font-bold uppercase tracking-widest text-gray-500 dark:text-gray-400 mb-2">Mailing Address</span>
+        <span
+          class="block text-xs font-bold uppercase tracking-widest text-gray-500 dark:text-gray-400 mb-2"
+          >Mailing Address</span
+        >
         <span class="block text-gray-700 dark:text-gray-300">CODA E1528S</span>
-        <span class="block text-gray-700 dark:text-gray-300">756 West Peachtree St.</span>
-        <span class="block text-gray-700 dark:text-gray-300">Atlanta, GA 30332</span>
+        <span class="block text-gray-700 dark:text-gray-300"
+          >756 West Peachtree St.</span
+        >
+        <span class="block text-gray-700 dark:text-gray-300"
+          >Atlanta, GA 30332</span
+        >
       </div>
     </div>
   </section>
 
   <!-- Research Interests -->
   <SectionWrapper title="Research Interests">
-    <div class="max-w-2xl space-y-4 text-gray-700 dark:text-gray-300 leading-relaxed">
+    <div
+      class="max-w-2xl space-y-4 text-gray-700 dark:text-gray-300 leading-relaxed"
+    >
       <p>
         My research focuses on applying systems techniques to improve
         performance and enable complex applications on constrained hardware,
-        drawing on computer architecture, compilers, and operating systems.
-        I'm interested in work that ships to real, deployed devices.
+        drawing on computer architecture, compilers, and operating systems. I'm
+        interested in work that ships to real, deployed devices.
       </p>
       <p>
-        My current work spans two projects: timekeeping for batteryless
-        embedded devices under intermittent power, and enabling low-power
-        Edge-AI with multimodal models using heterogeneous compute.
+        My current work spans two projects: timekeeping for batteryless embedded
+        devices under intermittent power, and enabling low-power Edge-AI with
+        multimodal models using heterogeneous compute.
       </p>
     </div>
   </SectionWrapper>
 
   <!-- News -->
-  <section class="py-10 md:py-16 border-t-2 border-blurple-600 dark:border-blurple-400">
-    <h2 class="font-serif font-bold text-2xl text-gray-900 dark:text-gray-100 mb-8">News and Announcements</h2>
+  <section
+    class="py-10 md:py-16 border-t-2 border-blurple-600 dark:border-blurple-400"
+  >
+    <h2
+      class="font-serif font-bold text-2xl text-gray-900 dark:text-gray-100 mb-8"
+    >
+      News and Announcements
+    </h2>
     <div class="space-y-5">
       {
         newsItems.map((item, i) => (
-          <div class:list={[i >= NEWS_DEFAULT_COUNT && "hidden"]} data-news-item>
+          <div
+            class:list={[i >= NEWS_DEFAULT_COUNT && "hidden"]}
+            data-news-item
+          >
             <NewsItem
               title={item.data.title}
               date={item.data.date}
@@ -115,46 +139,63 @@ const hasMore = newsItems.length > NEWS_DEFAULT_COUNT;
       )
     }
   </section>
+
+  <script>
+    function setupAboutPage() {
+      document
+        .getElementById("copy-bio-btn")
+        ?.addEventListener("click", async (e) => {
+          const btn = e.currentTarget as HTMLButtonElement;
+          const text =
+            document
+              .getElementById("bio-text")
+              ?.textContent?.replace(/\s+/g, " ")
+              .trim() ?? "";
+
+          let success = false;
+          if (navigator.clipboard?.writeText) {
+            try {
+              await navigator.clipboard.writeText(text);
+              success = true;
+            } catch {}
+          }
+          if (!success) {
+            const ta = document.createElement("textarea");
+            ta.value = text;
+            ta.style.cssText =
+              "position:fixed;left:0;top:0;opacity:0;pointer-events:none";
+            document.body.appendChild(ta);
+            ta.focus();
+            ta.setSelectionRange(0, ta.value.length);
+            try {
+              success = document.execCommand("copy");
+            } finally {
+              document.body.removeChild(ta);
+            }
+          }
+
+          if (success) {
+            btn.textContent = "Copied!";
+            setTimeout(() => (btn.textContent = "Copy bio"), 2000);
+          }
+        });
+
+      document
+        .getElementById("news-more-btn")
+        ?.addEventListener("click", (e) => {
+          const hidden = document.querySelectorAll("[data-news-item].hidden");
+          Array.from(hidden)
+            .slice(0, 5)
+            .forEach((el) => el.classList.remove("hidden"));
+          if (
+            document.querySelectorAll("[data-news-item].hidden").length === 0
+          ) {
+            (e.currentTarget as HTMLElement).remove();
+          }
+        });
+    }
+
+    document.addEventListener("astro:after-swap", setupAboutPage);
+    setupAboutPage();
+  </script>
 </BaseLayout>
-
-<script>
-  function setupAboutPage() {
-    document.getElementById("copy-bio-btn")?.addEventListener("click", async (e) => {
-      const btn = e.currentTarget as HTMLButtonElement;
-      const text = document.getElementById("bio-text")?.textContent?.replace(/\s+/g, " ").trim() ?? "";
-
-      let success = false;
-      if (navigator.clipboard?.writeText) {
-        try {
-          await navigator.clipboard.writeText(text);
-          success = true;
-        } catch {}
-      }
-      if (!success) {
-        const ta = document.createElement("textarea");
-        ta.value = text;
-        ta.style.cssText = "position:fixed;left:0;top:0;opacity:0;pointer-events:none";
-        document.body.appendChild(ta);
-        ta.focus();
-        ta.setSelectionRange(0, ta.value.length);
-        try { success = document.execCommand("copy"); } finally { document.body.removeChild(ta); }
-      }
-
-      if (success) {
-        btn.textContent = "Copied!";
-        setTimeout(() => (btn.textContent = "Copy bio"), 2000);
-      }
-    });
-
-    document.getElementById("news-more-btn")?.addEventListener("click", (e) => {
-      const hidden = document.querySelectorAll("[data-news-item].hidden");
-      Array.from(hidden).slice(0, 5).forEach((el) => el.classList.remove("hidden"));
-      if (document.querySelectorAll("[data-news-item].hidden").length === 0) {
-        (e.currentTarget as HTMLElement).remove();
-      }
-    });
-  }
-
-  setupAboutPage();
-  document.addEventListener("astro:page-load", setupAboutPage);
-</script>

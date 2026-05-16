@@ -20,29 +20,30 @@ import ThemeToggleButton from "@/components/layout/ThemeToggleButton.astro";
       <p
         class="text-lg md:text-xl text-gray-500 dark:text-gray-400 max-w-xl leading-relaxed"
       >
-        PhD Student &amp; Researcher, working at the intersection of computer systems and low-power embedded computing.
+        PhD Student &amp; Researcher, working at the intersection of computer
+        systems and low-power embedded computing.
       </p>
       <LandingNav />
     </main>
     <Footer />
   </div>
+
+  <script>
+    function setupLandingPage() {
+      const toggle = document.getElementById("theme-toggle-landing");
+      toggle?.addEventListener("click", () => {
+        const isDark = document.documentElement.classList.toggle("dark");
+        localStorage.setItem("theme", isDark ? "dark" : "light");
+        toggle.classList.add("spinning");
+        toggle.addEventListener(
+          "animationend",
+          () => toggle.classList.remove("spinning"),
+          { once: true },
+        );
+      });
+    }
+
+    setupLandingPage();
+    document.addEventListener("astro:after-swap", setupLandingPage);
+  </script>
 </EmptyLayout>
-
-<script>
-  function setupLandingPage() {
-    const toggle = document.getElementById("theme-toggle-landing");
-    toggle?.addEventListener("click", () => {
-      const isDark = document.documentElement.classList.toggle("dark");
-      localStorage.setItem("theme", isDark ? "dark" : "light");
-      toggle.classList.add("spinning");
-      toggle.addEventListener(
-        "animationend",
-        () => toggle.classList.remove("spinning"),
-        { once: true },
-      );
-    });
-  }
-
-  setupLandingPage();
-  document.addEventListener("astro:page-load", setupLandingPage);
-</script>
