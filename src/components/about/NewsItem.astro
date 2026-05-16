@@ -1,0 +1,57 @@
+---
+import Link from "@/components/nav/Link.astro";
+
+interface Props {
+  title: string;
+  date: Date;
+  type: "paper" | "talk" | "award" | "position";
+  details?: string[];
+  slug?: string;
+}
+
+const { title, date, type, details, slug } = Astro.props;
+
+const dateStr = date.toLocaleDateString("en-US", {
+  month: "short",
+  year: "numeric",
+  timeZone: "UTC",
+});
+
+const badgeLabel: Record<Props["type"], string> = {
+  paper: "Paper",
+  talk: "Talk",
+  award: "Award",
+  position: "Position",
+};
+
+const detailHref = slug ? `/news/${slug}/` : undefined;
+---
+
+<div class="flex gap-8 items-start">
+  <div class="shrink-0 w-20 flex flex-col items-end gap-1.5">
+    <span class="text-xs uppercase tracking-widest text-gray-400 text-right">
+      {dateStr}
+    </span>
+    <span class="text-xs font-bold uppercase tracking-wide px-2 py-0.5 rounded bg-blurple-700 dark:bg-blurple-300 text-gray-100 dark:text-gray-900">
+      {badgeLabel[type]}
+    </span>
+  </div>
+  <div class="min-w-0 flex flex-col gap-0.5 items-start">
+    {
+      detailHref ? (
+        <Link href={detailHref} noColor class="font-medium text-gray-900 dark:text-gray-100">
+          {title}
+        </Link>
+      ) : (
+        <span class="font-medium text-gray-900 dark:text-gray-100">{title}</span>
+      )
+    }
+    {
+      details && details.length > 0 && (
+        <span class="text-sm text-gray-500 dark:text-gray-400 break-words">
+          {details.join(" · ")}
+        </span>
+      )
+    }
+  </div>
+</div>

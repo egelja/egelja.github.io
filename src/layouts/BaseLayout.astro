@@ -23,14 +23,16 @@ const { title = null, description = null } = Astro.props;
     class="bg-blurple-50 dark:bg-blurple-900 text-gray-900 dark:text-gray-100 w-full min-h-screen flex flex-col relative z-10"
   >
     <Header menuIconId="menu-icon" themeToggleId="theme-toggle" />
-    <main class="mx-auto max-w-3xl pt-18 sm:pt-20 grow">
-      <slot />
+    <main class="mx-auto max-w-4xl pt-18 sm:pt-20 px-6 pb-24 grow w-full">
+      <div class="pt-12 w-full flex flex-col items-stretch">
+        <slot />
+      </div>
     </main>
     <Footer />
   </div>
   <aside
     id="sidebar"
-    class="w-full absolute top-0 bottom-0 left-0 right-0 z-0 bg-blurple-900 dark:bg-blurple-600 text-white"
+    class="w-full fixed inset-0 z-0 bg-blurple-900 dark:bg-blurple-600 text-white"
   >
     <div class="flex flex-col">
       <div class="flex-1 flex justify-end grow-0 p-5 pb-0">
@@ -43,9 +45,13 @@ const { title = null, description = null } = Astro.props;
       </div>
       <div class="flex-1 flex flex-col p-4 text-1.5xl">
         <Link class="m-5" noColor noUnderline href="/">home</Link>
-        {NAV_LINKS.map(({ href, label }) => (
-          <Link class="m-5" noColor noUnderline href={href}>{label}</Link>
-        ))}
+        {
+          NAV_LINKS.map(({ href, label }) => (
+            <Link class="m-5" noColor noUnderline href={href}>
+              {label}
+            </Link>
+          ))
+        }
       </div>
     </div>
   </aside>
@@ -78,9 +84,11 @@ const { title = null, description = null } = Astro.props;
 </style>
 
 <script>
-  document.getElementById("sidebar-close-icon")?.addEventListener("click", () => {
-    document.getElementById("body")?.classList.remove("sidebar--open");
-  });
+  document
+    .getElementById("sidebar-close-icon")
+    ?.addEventListener("click", () => {
+      document.getElementById("body")?.classList.remove("sidebar--open");
+    });
 
   document.getElementById("menu-icon")?.addEventListener("click", () => {
     document.getElementById("body")?.classList.add("sidebar--open");
@@ -91,6 +99,10 @@ const { title = null, description = null } = Astro.props;
     const isDark = document.documentElement.classList.toggle("dark");
     localStorage.setItem("theme", isDark ? "dark" : "light");
     themeToggle.classList.add("spinning");
-    themeToggle.addEventListener("animationend", () => themeToggle.classList.remove("spinning"), { once: true });
+    themeToggle.addEventListener(
+      "animationend",
+      () => themeToggle.classList.remove("spinning"),
+      { once: true },
+    );
   });
 </script>

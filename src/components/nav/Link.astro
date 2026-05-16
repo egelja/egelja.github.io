@@ -37,10 +37,10 @@ const target = outgoing ? "_blank" : "_self"; // _self is default
 const rel = outgoing ? "noopener noreferrer" : undefined;
 
 // Style attributes
-const linkVariants = cva(["inline-flex", "items-center", "py-0.25"], {
+const linkVariants = cva(["inline", "py-0.25"], {
   variants: {
     color: { false: null, true: ["text-accent"] },
-    outgoing: { false: ["px-0.5"], true: ["pl-1"] },
+    outgoing: { false: ["px-0.5"], true: null },
   },
 });
 
@@ -58,15 +58,19 @@ const linkClasses = twMerge(
   data-underline={!noUnderline}
   aria-current={isActive ? "page" : undefined}
 >
-  <span><slot /></span>
-  {
+  <!-- Comments to gobble whitespace while allowing proper auto formatting. -->
+  <span id="link-text" class="inline">
+    <slot />
+  </span><!---
+-->{
     outgoing && (
-      <span id="icon-span" class="p-0.5 pb-0">
+      <span class="inline-block align-middle -translate-y-0.5">
         <Icon name="flowbite:arrow-up-right-from-square-outline" />
       </span>
     )
-  }
-</a>
+  }<!--
+--></a
+>
 
 <style>
   /*
