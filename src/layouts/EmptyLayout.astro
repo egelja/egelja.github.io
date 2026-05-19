@@ -35,8 +35,8 @@ const fullDescription = description == null ? DEFAULT_DESCRIPTION : description;
     <!-- Dynamic meta tags -->
     <Head title={fullTitle} description={fullDescription} />
 
-    <!-- View transitions router -->
-    <ClientRouter />
+    <!-- View transitions router (disabled in dev for easier debugging) -->
+    {!import.meta.env.DEV && <ClientRouter />}
 
     <!-- Web analytics -->
     <!-- TODO -->
