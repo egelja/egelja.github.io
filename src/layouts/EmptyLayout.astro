@@ -37,9 +37,38 @@ const fullDescription = description == null ? DEFAULT_DESCRIPTION : description;
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preconnect" href="https://cdn.jsdelivr.net" />
 
-    <!-- Font stylesheets -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Quicksand:wght@300..700&display=swap" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mshaugh/nerdfont-webfonts@v3.3.0/build/iosevka.css" />
+    <!--
+     ***********************************
+     * Font stylesheets (non-blocking) *
+     ***********************************
+    -->
+    <!-- Google fonts. -->
+    <link
+      rel="preload"
+      href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Quicksand:wght@300..700&display=swap"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Quicksand:wght@300..700&display=swap"
+      />
+    </noscript>
+
+    <!-- Iosevka -->
+    <link
+      rel="preload"
+      href="https://cdn.jsdelivr.net/gh/mshaugh/nerdfont-webfonts@v3.3.0/build/iosevka.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/mshaugh/nerdfont-webfonts@v3.3.0/build/iosevka.css"
+      />
+    </noscript>
 
     <!-- Dynamic meta tags -->
     <Head title={fullTitle} description={fullDescription} />
