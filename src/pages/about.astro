@@ -56,6 +56,13 @@ const hasMore = newsItems.length > NEWS_DEFAULT_COUNT;
       >
         Copy bio
       </button>
+      <span
+        id="copy-bio-status"
+        role="status"
+        aria-live="polite"
+        aria-atomic="true"
+        class="sr-only"
+      ></span>
     </div>
     <div class="md:col-span-4">
       <div class="aspect-4/5 overflow-hidden rounded-lg">
@@ -97,7 +104,7 @@ const hasMore = newsItems.length > NEWS_DEFAULT_COUNT;
     >
       News and Announcements
     </h2>
-    <div class="space-y-5">
+    <div id="news-list" class="space-y-5">
       {
         newsItems.map((item, i) => (
           <div
@@ -119,6 +126,8 @@ const hasMore = newsItems.length > NEWS_DEFAULT_COUNT;
       hasMore && (
         <button
           id="news-more-btn"
+          aria-expanded="false"
+          aria-controls="news-list"
           class="mt-6 text-xs uppercase tracking-widest text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 transition-colors cursor-pointer"
         >
           Show more
@@ -166,13 +175,19 @@ const hasMore = newsItems.length > NEWS_DEFAULT_COUNT;
 
           if (success) {
             btn.textContent = "Copied!";
-            setTimeout(() => (btn.textContent = "Copy bio"), 2000);
+            const status = document.getElementById("copy-bio-status");
+            if (status) status.textContent = "Bio copied to clipboard.";
+            setTimeout(() => {
+              btn.textContent = "Copy bio";
+              if (status) status.textContent = "";
+            }, 2000);
           }
         });
 
       document
         .getElementById("news-more-btn")
         ?.addEventListener("click", (e) => {
+          const btn = e.currentTarget as HTMLButtonElement;
           const hidden = document.querySelectorAll("[data-news-item].hidden");
           Array.from(hidden)
             .slice(0, 5)
@@ -180,7 +195,8 @@ const hasMore = newsItems.length > NEWS_DEFAULT_COUNT;
           if (
             document.querySelectorAll("[data-news-item].hidden").length === 0
           ) {
-            (e.currentTarget as HTMLElement).remove();
+            btn.setAttribute("aria-expanded", "true");
+            btn.remove();
           }
         });
     }

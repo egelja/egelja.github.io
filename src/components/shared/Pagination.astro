@@ -21,11 +21,15 @@ const getPageHref = (page: number) =>
       aria-label="Pagination"
     >
       {currentPage > 1 ? (
-        <Link href={getPageHref(currentPage - 1)} noColor>
+        <Link href={getPageHref(currentPage - 1)} noColor aria-label="Previous page">
           ← Prev
         </Link>
       ) : (
-        <span class="text-gray-300 dark:text-gray-600 select-none">
+        <span
+          aria-disabled="true"
+          aria-label="Previous page, unavailable"
+          class="text-gray-300 dark:text-gray-600 select-none"
+        >
           ← Prev
         </span>
       )}
@@ -33,11 +37,15 @@ const getPageHref = (page: number) =>
       <div class="flex items-center gap-1">
         {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) =>
           page === currentPage ? (
-            <span class="px-3 py-1 rounded text-sm font-bold bg-blurple-600 dark:bg-blurple-400 text-white dark:text-gray-900">
+            <span
+              aria-current="page"
+              aria-label={`Page ${page}, current page`}
+              class="px-3 py-1 rounded text-sm font-bold bg-blurple-600 dark:bg-blurple-400 text-white dark:text-gray-900"
+            >
               {page}
             </span>
           ) : (
-            <Link href={getPageHref(page)} noColor noUnderline>
+            <Link href={getPageHref(page)} noColor noUnderline aria-label={`Page ${page}`}>
               <span class="px-3 py-1 rounded text-sm hover:bg-blurple-100 dark:hover:bg-blurple-900 transition-colors">
                 {page}
               </span>
@@ -47,11 +55,15 @@ const getPageHref = (page: number) =>
       </div>
 
       {currentPage < totalPages ? (
-        <Link href={getPageHref(currentPage + 1)} noColor>
+        <Link href={getPageHref(currentPage + 1)} noColor aria-label="Next page">
           Next →
         </Link>
       ) : (
-        <span class="text-gray-300 dark:text-gray-600 select-none">
+        <span
+          aria-disabled="true"
+          aria-label="Next page, unavailable"
+          class="text-gray-300 dark:text-gray-600 select-none"
+        >
           Next →
         </span>
       )}

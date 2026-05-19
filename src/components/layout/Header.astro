@@ -13,7 +13,7 @@ const { menuIconId, themeToggleId } = Astro.props;
 ---
 
 <header class="fixed top-0 right-0 left-0 z-50 border-b border-b-gray-400 dark:border-b-gray-700 bg-blurple-50 dark:bg-blurple-900">
-  <nav class="mx-auto max-w-5xl flex items-center justify-between p-5 lg:px-7">
+  <nav aria-label="Main" class="mx-auto max-w-5xl flex items-center justify-between p-5 lg:px-7">
     <div class="flex-1 grow">
       <a href="/" class="text-xl sm:text-1.5xl font-serif">
         <strong class="font-bold text-accent">Nikola V.</strong> Maruszewski
@@ -26,12 +26,15 @@ const { menuIconId, themeToggleId } = Astro.props;
     </div>
     <div class="flex items-center gap-2">
       <ThemeToggleButton id={themeToggleId} />
-      <Icon
+      <button
         id={menuIconId}
-        class="sm:hidden cursor-pointer"
-        name="flowbite:bars-outline"
-        size="1.5rem"
-      />
+        class="sm:hidden cursor-pointer flex items-center justify-center"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="sidebar"
+      >
+        <Icon name="flowbite:bars-outline" size="1.5rem" aria-hidden="true" />
+      </button>
     </div>
   </nav>
 </header>

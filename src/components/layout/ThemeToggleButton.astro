@@ -8,7 +8,7 @@ interface Props {
 const { id } = Astro.props;
 ---
 
-<button {id} class="cursor-pointer relative w-6 h-6">
+<button {id} class="cursor-pointer relative w-6 h-6" aria-label="Toggle color theme" aria-pressed="false">
   <Icon class="absolute inset-0 dark:hidden" name="flowbite:moon-outline" size="1.5rem" />
   <Icon class="absolute inset-0 hidden dark:block" name="flowbite:sun-outline" size="1.5rem" />
 </button>

@@ -23,6 +23,7 @@ const {
   class: className,
   noUnderline = false,
   noColor = false,
+  ...rest
 } = Astro.props;
 
 // Check if outgoing URL
@@ -50,23 +51,26 @@ const linkClasses = twMerge(
 ---
 
 <a
-  id="link"
   href={href}
   class={linkClasses}
   target={target}
   rel={rel}
   data-underline={!noUnderline}
   aria-current={isActive ? "page" : undefined}
+  {...rest}
 >
   <!-- Comments to gobble whitespace while allowing proper auto formatting. -->
-  <span id="link-text" class="inline">
+  <span class="inline">
     <slot />
   </span><!---
 -->{
     outgoing && (
-      <span class="inline-block align-middle -translate-y-0.5">
-        <Icon name="flowbite:arrow-up-right-from-square-outline" />
-      </span>
+      <>
+        <span class="inline-block align-middle -translate-y-0.5" aria-hidden="true">
+          <Icon name="flowbite:arrow-up-right-from-square-outline" aria-hidden="true" />
+        </span>
+        <span class="sr-only"> (opens in new tab)</span>
+      </>
     )
   }<!--
 --></a
@@ -79,16 +83,16 @@ const linkClasses = twMerge(
     Retrieved 2026-02-11, License - CC BY-SA 4.0
   */
   @media (hover: hover) {
-    #link:hover {
+    a:hover {
       color: var(--color-accent);
     }
-    #link[data-underline="true"] {
+    a[data-underline="true"] {
       --link-underline-color: var(--color-accent);
       background: linear-gradient(var(--link-underline-color) 0 0) bottom left/
         var(--underline-width, 0%) 0.1em no-repeat;
       transition: background-size 0.5s;
     }
-    #link[data-underline="true"]:hover {
+    a[data-underline="true"]:hover {
       --underline-width: 100%;
     }
   }

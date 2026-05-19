@@ -14,6 +14,7 @@ import ThemeToggleButton from "@/components/layout/ThemeToggleButton.astro";
       <ThemeToggleButton id="theme-toggle-landing" />
     </div>
     <main
+      id="main-content"
       class="grow flex flex-col items-center justify-center text-center px-6 gap-10"
     >
       <HeroName />
@@ -31,16 +32,23 @@ import ThemeToggleButton from "@/components/layout/ThemeToggleButton.astro";
   <script>
     function setupLandingPage() {
       const toggle = document.getElementById("theme-toggle-landing");
-      toggle?.addEventListener("click", () => {
-        const isDark = document.documentElement.classList.toggle("dark");
-        localStorage.setItem("theme", isDark ? "dark" : "light");
-        toggle.classList.add("spinning");
-        toggle.addEventListener(
-          "animationend",
-          () => toggle.classList.remove("spinning"),
-          { once: true },
+      if (toggle) {
+        toggle.setAttribute(
+          "aria-pressed",
+          String(document.documentElement.classList.contains("dark")),
         );
-      });
+        toggle.addEventListener("click", () => {
+          const nowDark = document.documentElement.classList.toggle("dark");
+          localStorage.setItem("theme", nowDark ? "dark" : "light");
+          toggle.setAttribute("aria-pressed", String(nowDark));
+          toggle.classList.add("spinning");
+          toggle.addEventListener(
+            "animationend",
+            () => toggle.classList.remove("spinning"),
+            { once: true },
+          );
+        });
+      }
     }
 
     setupLandingPage();
