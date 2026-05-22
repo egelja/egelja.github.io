@@ -62,7 +62,7 @@ const dateStr = date.toLocaleDateString("en-US", {
     <p class="text-sm text-gray-700 dark:text-gray-300 max-w-2xl leading-relaxed">
       {authors.map((author, i) => (
         <>
-          {i > 0 && <span class="text-gray-400 dark:text-gray-500">,{" "}</span>}
+          {i > 0 && <span class="text-gray-600 dark:text-gray-400">,{" "}</span>}
           {author === MY_NAME ? (
             <em class="italic font-semibold text-accent">{author}{equalContributorIndices?.includes(i) ? "*" : ""}</em>
           ) : (
@@ -73,7 +73,7 @@ const dateStr = date.toLocaleDateString("en-US", {
     </p>
     {equalContributorIndices && equalContributorIndices.length > 0 && (
       <div>
-        <p class="text-xs text-gray-500 dark:text-gray-400 mt-1 equal-contrib-note">
+        <p class="text-xs text-gray-600 dark:text-gray-400 mt-1 equal-contrib-note">
           (* denotes equal contribution)
         </p>
       </div>
@@ -81,8 +81,8 @@ const dateStr = date.toLocaleDateString("en-US", {
   </div>
 
   <div class="flex flex-col items-center gap-0.5">
-    <span class="text-sm text-gray-500 dark:text-gray-400">{venue}</span>
-    <span class="text-sm font-mono text-gray-500 dark:text-gray-400">{dateStr}</span>
+    <span class="text-sm text-gray-600 dark:text-gray-400">{venue}</span>
+    <span class="text-sm font-mono text-gray-600 dark:text-gray-400">{dateStr}</span>
   </div>
 
   {badges && badges.length > 0 && (

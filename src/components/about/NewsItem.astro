@@ -29,7 +29,7 @@ const detailHref = slug ? `/news/${slug}/` : undefined;
 
 <div class="flex gap-8 items-start">
   <div class="shrink-0 w-20 flex flex-col items-end gap-1.5">
-    <span class="text-xs uppercase tracking-widest text-gray-400 text-right">
+    <span class="text-xs uppercase tracking-widest text-gray-600 dark:text-gray-400 text-right">
       {dateStr}
     </span>
     <span class="text-xs font-bold uppercase tracking-wide px-2 py-0.5 rounded bg-blurple-700 dark:bg-blurple-300 text-gray-100 dark:text-gray-900">
@@ -48,7 +48,7 @@ const detailHref = slug ? `/news/${slug}/` : undefined;
     }
     {
       details && details.length > 0 && (
-        <span class="ml-0.5 text-sm text-gray-500 dark:text-gray-400 break-words">
+        <span class="ml-0.5 text-sm text-gray-600 dark:text-gray-400 break-words">
           {details.join(" · ")}
         </span>
       )
