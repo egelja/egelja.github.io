@@ -1,5 +1,7 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import Link from "@/components/nav/Link.astro";
+import PdfViewer from "@/components/shared/PdfViewer.tsx";
 ---
 
 <BaseLayout title="CV">
@@ -18,27 +20,14 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
     </a>
   </div>
 
-  <!--   <iframe
+  <PdfViewer
+    client:only="preact"
     src="/cv-Nikola_Maruszewski.pdf"
-    class="w-full rounded-lg border border-gray-200 dark:border-gray-700"
-    style="height: calc(100vh - 220px); min-height: 600px;"
     title="Nikola V. Maruszewski — CV"
-    set:html={`
-      <p class="text-gray-700 dark:text-gray-300">
-        PDF viewer not supported. <a href="/cv-Nikola_Maruszewski.pdf" class="underline">Download CV</a> instead.
-      </p>
-    `}
-  /> -->
-
-  <iframe
-    src="/cv-Nikola_Maruszewski.pdf"
-    class="w-full rounded-lg border border-gray-200 dark:border-gray-700"
-    style="height: calc(100vh - 220px); min-height: 600px;"
-    title="Nikola V. Maruszewski — CV"></iframe>
-  <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">
-    PDF viewer not loading? <a
-      href="/cv-Nikola_Maruszewski.pdf"
-      class="underline font-medium">Download CV directly</a
-    >.
-  </p>
+  >
+    PDF viewer not loading? <Link href="/cv-Nikola_Maruszewski.pdf"
+      >Download CV directly.</Link
+    ><!-- 
+--></PdfViewer
+  >
 </BaseLayout>

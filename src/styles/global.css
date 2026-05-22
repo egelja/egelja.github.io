@@ -66,3 +66,8 @@ html.dark, html.dark body {
 .dark {
   --color-accent: #a5a5fe;
 }
+
+/* pdf.js expects content-box — Tailwind preflight overrides to border-box which shifts text layer coordinates */
+.pdfViewer .page {
+  box-sizing: content-box;
+}
