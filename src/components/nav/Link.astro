@@ -64,14 +64,11 @@ const linkClasses = twMerge(
     <slot />
   </span><!---
 -->{
-    outgoing && (
-      <>
-        <span class="inline-block align-middle -translate-y-0.5" aria-hidden="true">
+    outgoing &&
+      /* prettier-ignore */
+      <><span class="inline-block align-middle -translate-y-0.5" aria-hidden="true">
           <Icon name="flowbite:arrow-up-right-from-square-outline" aria-hidden="true" />
-        </span>
-        <span class="sr-only"> (opens in new tab)</span>
-      </>
-    )
+        </span><span class="sr-only"> (opens in new tab)</span></>
   }<!--
 --></a
 >
@@ -95,5 +92,10 @@ const linkClasses = twMerge(
     a[data-underline="true"]:hover {
       --underline-width: 100%;
     }
+  }
+
+  a,
+  span {
+    white-space-collapse: collapse;
   }
 </style>
