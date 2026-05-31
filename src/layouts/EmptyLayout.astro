@@ -79,6 +79,13 @@ const fullDescription = description == null ? DEFAULT_DESCRIPTION : description;
     <!-- Web analytics -->
     <!-- TODO -->
 
+    <!-- Cloudflare email protection fix for ClientRouter -->
+    <script>
+      document.addEventListener('astro:before-swap', (e) => {
+        e.newDocument.querySelector('script[src*="/cloudflare-static/email-decode"]')?.setAttribute('data-astro-rerun', '');
+      });
+    </script>
+
     <!-- Dark mode switch. -->
     <script>
       const updateDarkMode = () => {
