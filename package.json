@@ -17,7 +17,7 @@
     "@astrojs/sitemap": "^3.7.2",
     "@playform/compress": "^0.2.3",
     "@tailwindcss/vite": "^4.3.0",
-    "astro": "^6.3.3",
+    "astro": "^7.1.0",
     "astro-icon": "^1.1.5",
     "cva": "npm:class-variance-authority@^0.7.1",
     "preact": "^10.29.1",
