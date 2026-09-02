@@ -30,6 +30,8 @@ const BADGE_LABELS: Record<BadgeKey, string> = {
   "acm-replicated": "ACM Results Replicated",
 };
 
+import Person from "@/components/shared/Person.astro";
+
 const MY_NAME = "Nikola Vuk Maruszewski";
 
 interface Props {
@@ -60,16 +62,10 @@ const dateStr = date.toLocaleDateString("en-US", {
 
   <div class="flex flex-col items-center gap-2">
     <p class="text-sm text-gray-700 dark:text-gray-300 max-w-2xl leading-relaxed">
-      {authors.map((author, i) => (
-        <>
-          {i > 0 && <span class="text-gray-600 dark:text-gray-400">,{" "}</span>}
-          {author === MY_NAME ? (
-            <em class="italic font-semibold text-accent">{author}{equalContributorIndices?.includes(i) ? "*" : ""}</em>
-          ) : (
-            <span>{author}{equalContributorIndices?.includes(i) ? "*" : ""}</span>
-          )}
-        </>
-      ))}
+      {authors.map((author, i) => {
+        const star = equalContributorIndices?.includes(i) ? "*" : "";
+        return (<>{i > 0 && <span class="text-gray-600 dark:text-gray-400">, </span>}{author === MY_NAME ? (<em class="italic font-semibold text-accent">{author}{star}</em>) : (<Person name={author} suffix={star} />)}</>);
+      })}
     </p>
     {equalContributorIndices && equalContributorIndices.length > 0 && (
       <div>

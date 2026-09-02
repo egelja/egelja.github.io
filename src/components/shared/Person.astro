@@ -1,0 +1,16 @@
+---
+import { homepageFor } from "@/data/people";
+
+interface Props {
+  /** Name, optionally with a leading honorific ("Dr. …"); must resolve in src/data/people.ts or the build fails. */
+  name: string;
+  /** Optional trailing marker rendered inside the name, e.g. "*" for equal contribution. */
+  suffix?: string;
+}
+
+const { name, suffix = "" } = Astro.props;
+const url = homepageFor(name); // throws if the name is unknown
+const label = name + suffix;
+---
+<!-- prettier-ignore -->
+{url ? <a href={url} target="_blank" rel="noopener noreferrer" aria-label={`${label} (opens in new tab)`} class="underline decoration-dotted underline-offset-2 hover:text-accent">{label}</a> : <span>{label}</span>}

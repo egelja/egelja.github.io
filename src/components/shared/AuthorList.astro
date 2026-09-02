@@ -1,0 +1,20 @@
+---
+import Person from "@/components/shared/Person.astro";
+
+interface Props {
+  /** Author names, in order. Each must have an entry in src/data/people.ts. */
+  names: string[];
+  /** Indices that get a trailing "*" (equal contribution). */
+  equalIndices?: number[];
+}
+
+const { names, equalIndices = [] } = Astro.props;
+
+function separator(i: number): string {
+  if (i === 0) return "";
+  if (i === names.length - 1) return names.length > 2 ? ", and " : " and ";
+  return ", ";
+}
+---
+<!-- prettier-ignore -->
+{names.map((name, i) => <Fragment>{separator(i)}<Person name={name} suffix={equalIndices.includes(i) ? "*" : ""} /></Fragment>)}
